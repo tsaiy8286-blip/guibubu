@@ -14,8 +14,8 @@ window.VERIFY_DATA = {
     {
       id: "v1",
       name: "第一版：起卦小工具",
-      status: "verifying",
-      closedAt: null,
+      status: "closed",
+      closedAt: "2026-10-04",
       specRef: "docs/SPEC.md",
       allTicketsLoaded: true,
 

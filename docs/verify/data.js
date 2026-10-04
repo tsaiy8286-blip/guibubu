@@ -186,6 +186,56 @@ window.VERIFY_DATA = {
               crossEnv: false
             }
           ]
+        },
+        {
+          id: "05-copy-obsidian",
+          title: "05 複製到 Obsidian",
+          items: [
+            {
+              id: "v1/05-copy-obsidian/obsidian-paste",
+              text: "用電腦雙擊 `index.html`，填好起卦資訊（問事內容試著打兩行），按「開始擲卦」，依序點：1正面、3背面、1正面、2正面、3背面、2正面。往下捲到「複製到 Obsidian」，按下去。\n\n打開電腦上的 Obsidian，新增一篇空白筆記，按 `Ctrl + V` 貼上。\n\n預期：\n- 按鈕變成「✓ 已複製」\n- 筆記最上方出現「屬性」（Properties）方塊，有日期、類別、問事、本卦（天水訟）、變卦（火地晉）、動爻（二爻、五爻）、擲出、驗證、tags 九項；問事的兩行在這裡變成一行\n- 下面標題「天水訟 → 火地晉」，接著是問事（保留兩行）、類別、時間\n- 六爻表格顯示成整齊的表格，五爻、二爻有 ○\n- 本卦、變卦卦辭以引言樣式顯示，最下面有「我的解讀」「實際結果」兩個空白段落",
+              spec: { ref: "docs/cards/v1/05-copy-obsidian.md", quote: "貼進 Obsidian 新筆記：上方屬性（Properties）正確顯示日期、類別、問事、本卦、變卦、動爻、擲出、驗證、tags" },
+              risk: "high",
+              riskReason: "AI 只確認過複製出去的文字，沒有 Obsidian 可以看貼上後的實際顯示",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: false, how: "" } },
+              manualOnly: true,
+              manualOnlyReason: "AI 沒有你的 Obsidian",
+              crossEnv: false
+            },
+            {
+              id: "v1/05-copy-obsidian/look-and-feel",
+              text: "接著上一項，看結果區下方的複製區。\n\n預期：\n- 朱紅色「複製到 Obsidian」、灰色小字「▶ 預覽筆記內容」、外框按鈕「再起一卦」，排列順眼\n- 點開預覽，筆記文字大小好讀",
+              spec: { ref: "SPEC.md 複製區", quote: "一顆朱紅色主要按鈕「複製到 Obsidian」。按下後按鈕顯示「✓ 已複製」。" },
+              risk: "medium",
+              riskReason: "好不好看只有你能判斷",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: false, how: "" } },
+              manualOnly: true,
+              manualOnlyReason: "外觀感受 AI 無法判斷",
+              crossEnv: false
+            },
+            {
+              id: "v1/05-copy-obsidian/own-phone",
+              text: "**這項要等存檔並推上去之後才能驗。**\n\n用你自己的手機打開 https://tsaiy8286-blip.github.io/guibubu/ （畫面怪怪的就重新整理），擲一卦，按「複製到 Obsidian」，再打開手機的 Obsidian 新增筆記、長按貼上。\n\n預期：\n- 按鈕變「✓ 已複製」（若出現「無法自動複製…」提示，就展開預覽、長按選取文字複製，也要能成功）\n- 貼進手機 Obsidian 後，屬性與表格顯示正常",
+              spec: { ref: "docs/cards/v1/05-copy-obsidian.md", quote: "在手機上複製、貼到手機的 Obsidian 也正常" },
+              risk: "high",
+              riskReason: "手機瀏覽器對「自動複製」的限制各家不同，AI 只在電腦 Chrome 測過",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: false, how: "" } },
+              manualOnly: true,
+              manualOnlyReason: "AI 沒有你的手機和手機 Obsidian",
+              crossEnv: true
+            },
+            {
+              id: "v1/05-copy-obsidian/preview-and-reset",
+              text: "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n用電腦打開 `index.html`：\n\n1. 擲完一卦（**先不要複製**），點「預覽筆記內容」展開、再點收合\n2. 按「再起一卦」→ 跳出「這一卦還沒複製，確定要清除嗎？」→ 按**取消**\n3. 按「複製到 Obsidian」，再按「再起一卦」\n4. 重新填資料，六次都點 2正面，展開預覽\n\n預期：\n- 1：預覽可以展開、收合\n- 2：按取消後畫面什麼都沒變\n- 3：不會跳確認，直接清空所有欄位、回到頁面最上方\n- 4：預覽裡寫「變卦: 無」「動爻: []」，標題「乾為天（六爻安靜）」",
+              spec: { ref: "docs/cards/v1/05-copy-obsidian.md", quote: "沒複製就按「再起一卦」會跳出確認；按取消什麼都不變" },
+              risk: "low",
+              riskReason: "AI 已實際操作過這幾個步驟，結果都對",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: true, how: "Claude in Chrome 打開本機預覽：擲天水訟之火地晉後用滑鼠點「複製到 Obsidian」，按鈕變「✓ 已複製」，用 PowerShell 讀系統剪貼簿與預覽內容一字不差、問事換行在屬性變空格；預覽可展開收合；已複製時按「再起一卦」不確認、全部清空並捲回最上方；乾卦未複製時按「再起一卦」跳出確認（以替身攔截），取消不變、確定清空；乾卦筆記為變卦: 無、動爻: []、標題乾為天（六爻安靜）；375px、320px 寬無左右捲動；console 無錯誤" } },
+              manualOnly: false,
+              manualOnlyReason: "",
+              crossEnv: false
+            }
+          ]
         }
       ]
     }

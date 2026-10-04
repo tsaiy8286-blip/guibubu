@@ -2,7 +2,7 @@
   "project": "龜卜卜六爻小幫手",
   "changeId": "v1",
   "changeName": "第一版：起卦小工具",
-  "exportedAt": "2026-10-04T07:54:18.448Z",
+  "exportedAt": "2026-10-04T13:03:09.651Z",
   "environments": [
     {
       "id": "desktop",
@@ -14,11 +14,11 @@
     }
   ],
   "summary": {
-    "total": 13,
-    "pass": 12,
+    "total": 17,
+    "pass": 15,
     "fail": 1,
     "skip": 0,
-    "untested": 0
+    "untested": 1
   },
   "verdict": {
     "v1/01-page-foundation/look-and-feel": {
@@ -82,6 +82,21 @@
       "envs": {}
     },
     "v1/04-result/known-cases": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/05-copy-obsidian/obsidian-paste": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/05-copy-obsidian/look-and-feel": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/05-copy-obsidian/own-phone": {
       "status": "pass",
       "note": "",
       "envs": {}

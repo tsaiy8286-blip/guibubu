@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="8" fill="#b0352a"/>
+  <rect x="4" y="4" width="56" height="56" rx="5" fill="none" stroke="#fdf6e8" stroke-opacity="0.45" stroke-width="2"/>
+  <text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-size="44" font-weight="700" fill="#fdf6e8" font-family="'Noto Serif TC','Source Han Serif TC','Songti TC','PMingLiU','MingLiU',serif">易</text>
+</svg>

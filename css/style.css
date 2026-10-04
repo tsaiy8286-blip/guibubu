@@ -77,14 +77,6 @@ body {
   padding: 24px 0;
 }
 
-.placeholder {
-  padding: 40px 16px;
-  border: 1px dashed var(--line);
-  border-radius: 6px;
-  background: var(--card);
-  color: var(--ink-soft);
-  text-align: center;
-}
 
 [hidden] { display: none !important; }
 
@@ -449,6 +441,39 @@ body {
   margin: 0;
   color: var(--cinnabar);
   font-weight: 700;
+}
+
+/* 複製區 */
+.copy-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.copy-fail {
+  margin: 0;
+  color: var(--cinnabar);
+  font-size: 0.9rem;
+}
+
+.note-preview summary {
+  cursor: pointer;
+  color: var(--ink-soft);
+  padding: 4px 0;
+}
+
+.note-preview pre {
+  margin: 8px 0 0;
+  padding: 12px;
+  max-height: 60vh;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fffaf0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 /* 手機：卦象縮小一點才放得下 */

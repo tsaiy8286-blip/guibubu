@@ -70,12 +70,15 @@ function toMarkdown(info, result) {
   var p = result.primary;
   var c = result.changed;
   var movingNames = result.moving.map(function (i) { return POSITIONS[i]; });
+  // 問事可能有換行：屬性欄位要一行，正文保留換行但去掉空行
+  var questionOneLine = info.question.replace(/\s*\n\s*/g, ' ');
+  var questionBody = info.question.replace(/\n\s*\n+/g, '\n');
   var out = [];
 
   out.push('---');
   out.push('日期: ' + info.date);
   out.push('類別: ' + info.category);
-  out.push('問事: "' + info.question.replace(/"/g, '\\"') + '"');
+  out.push('問事: "' + questionOneLine.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"');
   out.push('本卦: ' + p.fullName);
   out.push('變卦: ' + (c ? c.fullName : '無'));
   out.push('動爻: [' + movingNames.join(', ') + ']');
@@ -86,7 +89,7 @@ function toMarkdown(info, result) {
   out.push('');
   out.push('# ' + p.fullName + (c ? ' → ' + c.fullName : '（六爻安靜）'));
   out.push('');
-  out.push('**問事**：' + info.question);
+  out.push('**問事**：' + questionBody);
   out.push('**類別**：' + info.category);
   out.push('**時間**：' + info.date.replace('T', ' '));
   out.push('');

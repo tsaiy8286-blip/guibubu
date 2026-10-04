@@ -115,7 +115,17 @@
           <p class="result-moving" id="result-moving"></p>
         </section>
 
-        <div class="placeholder">複製區施工中</div>
+        <section class="panel copy-area">
+          <button class="btn btn-primary btn-block" type="button" id="copy-note">複製到 Obsidian</button>
+          <p class="copy-fail" id="copy-fail" hidden>無法自動複製，請展開下方預覽，長按選取文字複製</p>
+
+          <details class="note-preview" id="note-preview">
+            <summary>預覽筆記內容</summary>
+            <pre id="note-text"></pre>
+          </details>
+
+          <button class="btn btn-block" type="button" id="new-cast">再起一卦</button>
+        </section>
       </div>
     </main>
   </div>

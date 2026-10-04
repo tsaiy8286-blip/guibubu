@@ -54,6 +54,7 @@
     if (!isFilled()) return;
     startBtn.textContent = '完成修改';
     showSummary();
+    if (throws.length === 6) renderNote();
   });
 
   editBtn.addEventListener('click', function () {
@@ -196,7 +197,86 @@
     var movingEl = document.getElementById('result-moving');
     movingEl.hidden = !hasChange;
     movingEl.textContent = '動爻：' + result.moving.map(function (i) { return POSITIONS[i]; }).join('、');
+
+    renderNote();
   }
+
+  // 複製區
+  var copyBtn = document.getElementById('copy-note');
+  var copyFail = document.getElementById('copy-fail');
+  var notePreview = document.getElementById('note-preview');
+  var noteText = document.getElementById('note-text');
+  var newCastBtn = document.getElementById('new-cast');
+
+  // 最後一次成功複製的筆記；筆記內容一改就不算複製過
+  var copiedNote = null;
+
+  function currentNote() {
+    return toMarkdown({
+      date: timeInput.value,
+      category: categorySelect.value,
+      question: questionInput.value.trim()
+    }, cast(throws));
+  }
+
+  function renderNote() {
+    var note = currentNote();
+    noteText.textContent = note;
+    copyBtn.textContent = note === copiedNote ? '✓ 已複製' : '複製到 Obsidian';
+    copyFail.hidden = true;
+  }
+
+  // 先用瀏覽器的剪貼簿功能，不行再用舊方法；都失敗才算失敗
+  function copyText(text, done) {
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      done(ok);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+    } else {
+      fallback();
+    }
+  }
+
+  copyBtn.addEventListener('click', function () {
+    var note = currentNote();
+    copyText(note, function (ok) {
+      if (ok) {
+        copiedNote = note;
+        copyBtn.textContent = '✓ 已複製';
+        copyFail.hidden = true;
+      } else {
+        copyFail.hidden = false;
+      }
+    });
+  });
+
+  newCastBtn.addEventListener('click', function () {
+    if (currentNote() !== copiedNote && !window.confirm('這一卦還沒複製，確定要清除嗎？')) return;
+    timeInput.value = '';
+    categorySelect.value = '';
+    questionInput.value = '';
+    throws = [];
+    copiedNote = null;
+    notePreview.open = false;
+    startBtn.textContent = '開始擲卦';
+    updateStartBtn();
+    summary.hidden = true;
+    throwArea.hidden = true;
+    castInfo.hidden = false;
+    renderThrows();
+    window.scrollTo(0, 0);
+  });
 
   renderThrows();
 })();

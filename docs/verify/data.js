@@ -17,7 +17,7 @@ window.VERIFY_DATA = {
       status: "verifying",
       closedAt: null,
       specRef: "docs/SPEC.md",
-      allTicketsLoaded: false,
+      allTicketsLoaded: true,
 
       tickets: [
         {
@@ -234,6 +234,51 @@ window.VERIFY_DATA = {
               manualOnly: false,
               manualOnlyReason: "",
               crossEnv: false
+            }
+          ]
+        },
+        {
+          id: "06-resume",
+          title: "06 中途中斷接續",
+          items: [
+            {
+              id: "v1/06-resume/own-phone",
+              text: "**這項要等存檔並推上去之後才能驗。**\n\n用你自己的手機打開 https://tsaiy8286-blip.github.io/guibubu/ ，填好起卦資訊、擲到第三爻，然後：\n\n1. 切到別的 App（例如 LINE）用個幾分鐘，再切回瀏覽器\n2. 把瀏覽器分頁整個關掉，再重新打開網址\n3. 用電腦打開同一個網址\n\n預期：\n- 1、2：起卦資訊和三個爻都還在，可以接著擲\n- 3：電腦上是空白頁（手機和電腦各自記，不會互相看到）",
+              spec: { ref: "docs/cards/v1/06-resume.md", quote: "手機上擲到一半，切到別的 App 一陣子再回來 → 內容還在" },
+              risk: "high",
+              riskReason: "手機瀏覽器在背景會被系統關掉，AI 只在電腦 Chrome 測過重新整理",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: false, how: "" } },
+              manualOnly: true,
+              manualOnlyReason: "AI 沒有你的手機",
+              crossEnv: true
+            },
+            {
+              id: "v1/06-resume/reload-cases",
+              text: "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n用電腦打開 `index.html`，每一步做完都按一次 `F5` 重新整理：\n\n1. 只填好起卦資訊，不按開始擲卦\n2. 按開始擲卦，擲三爻\n3. 擲完六爻\n4. 按「複製到 Obsidian」，再按「再起一卦」\n\n預期：\n- 1：填的內容還在\n- 2：摘要列和三個爻都在，標題是「第 4 擲（四爻）」\n- 3：結果區、複製區都在\n- 4：重新整理後是全新空白頁",
+              spec: { ref: "docs/cards/v1/06-resume.md", quote: "擲到第三爻重新整理 → 摘要列與三爻都在，可接著擲第四擲" },
+              risk: "low",
+              riskReason: "AI 已實際每一步都重新整理過，結果都對",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: true, how: "Claude in Chrome 打開本機預覽，每步真的重新整理：只填起卦資訊→內容都在；擲三爻→摘要列與三爻都在、標題第 4 擲；擲完六爻→結果區（履之益）與複製區都在；點複製後重新整理仍是「✓ 已複製」，按再起一卦不跳確認、重新整理為空白頁；按修改後重新整理停在修改狀態；暫存資料弄壞時當成空白頁不報錯；console 無錯誤" } },
+              manualOnly: false,
+              manualOnlyReason: "",
+              crossEnv: false
+            }
+          ]
+        },
+        {
+          id: "integration",
+          title: "整體走一遍",
+          items: [
+            {
+              id: "v1/integration/full-flow",
+              text: "**這項要等存檔並推上去之後才能驗。** 用你平常會用的裝置打開 https://tsaiy8286-blip.github.io/guibubu/ ，照真的要問一件事那樣完整走一次：\n\n1. 按「填入現在時間」，選類別，寫下真正想問的事，按「開始擲卦」\n2. 拿三枚錢幣真的擲六次，每次照桌上的結果點按鈕；中途故意重新整理一次\n3. 看結果區的卦象、卦名、卦辭、動爻\n4. 按「複製到 Obsidian」，貼進 Obsidian 存好\n5. 按「複製 AI 解卦提示詞」，貼給 AI 看看它怎麼解\n6. 按「再起一卦」回到空白頁\n\n預期：\n- 整個流程順手，沒有卡住或看不懂的地方\n- 重新整理後接著擲沒有問題\n- Obsidian 筆記和 AI 提示詞內容都對得上這一卦",
+              spec: { ref: "SPEC.md 頁面：起卦（首頁）", quote: "填好要問的事 → 照桌上錢幣點六次 → 看到本卦、變卦、動爻與卦辭 → 複製成 Obsidian 筆記。" },
+              risk: "medium",
+              riskReason: "各張卡分開驗過，但整個流程順不順手只有你實際用才知道",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: false, how: "" } },
+              manualOnly: true,
+              manualOnlyReason: "實際使用的感受 AI 無法判斷",
+              crossEnv: true
             }
           ]
         }

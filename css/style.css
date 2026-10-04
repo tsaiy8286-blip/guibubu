@@ -137,6 +137,12 @@ body {
 
 .input::placeholder { color: #a8998a; }
 
+.input-multiline {
+  display: block;
+  line-height: 1.6;
+  resize: vertical;
+}
+
 .time-row {
   display: flex;
   flex-wrap: wrap;
@@ -227,6 +233,7 @@ body {
   flex-basis: 100%;
   font-weight: 700;
   overflow-wrap: anywhere;
+  white-space: pre-line;
 }
 
 /* 擲卦區 */

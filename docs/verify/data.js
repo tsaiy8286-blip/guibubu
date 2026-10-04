@@ -238,6 +238,56 @@ window.VERIFY_DATA = {
           ]
         }
       ]
+    },
+    {
+      id: "ai-prompt",
+      name: "AI 解卦提示詞",
+      status: "verifying",
+      closedAt: null,
+      specRef: "docs/SPEC.md",
+      allTicketsLoaded: true,
+
+      tickets: [
+        {
+          id: "01-copy-ai-prompt",
+          title: "01 複製 AI 解卦提示詞",
+          items: [
+            {
+              id: "ai-prompt/01-copy-ai-prompt/paste-to-ai",
+              text: "用電腦雙擊 `index.html`，填好起卦資訊，擲一卦有動爻的（例如：1正面、3背面、1正面、2正面、3背面、2正面）。往下捲到複製區，按「複製 AI 解卦提示詞」。\n\n打開你常用的 AI（Claude、ChatGPT 都可以），在對話框貼上，把「事情背景」「最在意／最害怕的事情」底下的空白線換成你自己的話，送出。\n\n預期：\n- 「複製到 Obsidian」下方多一顆外框按鈕「複製 AI 解卦提示詞」，按下後變「✓ 已複製」，兩顆按鈕排列順眼\n- 貼上的內容是你的整份提示詞，最後「我的問卦資料」已填好問卦問題（前面有類別）、本卦、動爻（例如 二爻（九二））、變卦\n- AI 依提示詞的 ①～⑪ 格式解卦",
+              spec: { ref: "docs/cards/ai-prompt/01-copy-ai-prompt.md", quote: "貼到自己常用的 AI（例如 Claude、ChatGPT），補上背景後送出，AI 能照提示詞格式解卦" },
+              risk: "high",
+              riskReason: "AI 只確認過複製出去的文字，沒有實際貼給 AI 解卦，也判斷不了按鈕好不好看",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: false, how: "" } },
+              manualOnly: true,
+              manualOnlyReason: "要用你自己的 AI 帳號實際送出，外觀也只有你能判斷",
+              crossEnv: false
+            },
+            {
+              id: "ai-prompt/01-copy-ai-prompt/own-phone",
+              text: "**這項要等存檔並推上去之後才能驗。**\n\n用你自己的手機打開 https://tsaiy8286-blip.github.io/guibubu/ （畫面怪怪的就關掉重開），擲一卦，按「複製 AI 解卦提示詞」，貼到手機上的 AI App。\n\n預期：\n- 兩顆複製按鈕上下排列，好按\n- 按鈕變「✓ 已複製」，貼上的內容完整",
+              spec: { ref: "docs/cards/ai-prompt/01-copy-ai-prompt.md", quote: "手機尺寸下兩顆複製按鈕排列正常、好按" },
+              risk: "medium",
+              riskReason: "電腦模擬過 375px、320px 寬都正常，但實機上手指好不好按要你試",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: false, how: "" } },
+              manualOnly: true,
+              manualOnlyReason: "AI 沒有你的手機",
+              crossEnv: true
+            },
+            {
+              id: "ai-prompt/01-copy-ai-prompt/filled-content",
+              text: "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n用電腦打開 `index.html`，擲兩組，各按一次「複製 AI 解卦提示詞」貼到記事本看最後一段：\n\n1. 1正面、3背面、1正面、2正面、3背面、2正面\n2. 六次都點 2正面\n\n預期：\n- 第 1 組：【本卦】第6卦 天水訟（上乾下坎）——訟卦辭；【動爻】二爻（九二）、五爻（九五）；【變卦】第35卦 火地晉（上離下坤）——晉卦辭\n- 第 2 組：【本卦】第1卦 乾為天（上乾下乾）——乾卦辭；【動爻】無（六爻安靜）；【變卦】無",
+              spec: { ref: "docs/cards/ai-prompt/01-copy-ai-prompt.md", quote: "六次都點 2正面（乾，六爻安靜）：【動爻】無（六爻安靜）、【變卦】無" },
+              risk: "low",
+              riskReason: "AI 已實際複製並從剪貼簿讀出比對過",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: true, how: "Claude in Chrome 打開本機預覽：擲天水訟之火地晉後用滑鼠點「複製 AI 解卦提示詞」，按鈕變「✓ 已複製」；用 PowerShell 讀系統剪貼簿，「我的問卦資料」之前與原檔一字不差，資料區問卦問題、本卦、動爻二爻（九二）五爻（九五）、變卦皆正確；乾卦為動爻無（六爻安靜）、變卦無；重擲成不同卦時按鈕變回；375px、320px 寬無左右捲動；node 驗 12 個爻題正確；console 無錯誤" } },
+              manualOnly: false,
+              manualOnlyReason: "",
+              crossEnv: false
+            }
+          ]
+        }
+      ]
     }
   ]
 };

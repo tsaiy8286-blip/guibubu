@@ -211,18 +211,30 @@
   // 最後一次成功複製的筆記；筆記內容一改就不算複製過
   var copiedNote = null;
 
-  function currentNote() {
-    return toMarkdown({
+  var copyPromptBtn = document.getElementById('copy-prompt');
+  var copiedPrompt = null;
+
+  function currentInfo() {
+    return {
       date: timeInput.value,
       category: categorySelect.value,
       question: questionInput.value.trim()
-    }, cast(throws));
+    };
+  }
+
+  function currentNote() {
+    return toMarkdown(currentInfo(), cast(throws));
+  }
+
+  function currentPrompt() {
+    return toPrompt(currentInfo(), cast(throws));
   }
 
   function renderNote() {
     var note = currentNote();
     noteText.textContent = note;
     copyBtn.textContent = note === copiedNote ? '✓ 已複製' : '複製到 Obsidian';
+    copyPromptBtn.textContent = currentPrompt() === copiedPrompt ? '✓ 已複製' : '複製 AI 解卦提示詞';
     copyFail.hidden = true;
   }
 
@@ -261,6 +273,19 @@
     });
   });
 
+  copyPromptBtn.addEventListener('click', function () {
+    var prompt = currentPrompt();
+    copyText(prompt, function (ok) {
+      if (ok) {
+        copiedPrompt = prompt;
+        copyPromptBtn.textContent = '✓ 已複製';
+        copyFail.hidden = true;
+      } else {
+        copyFail.hidden = false;
+      }
+    });
+  });
+
   newCastBtn.addEventListener('click', function () {
     if (currentNote() !== copiedNote && !window.confirm('這一卦還沒複製，確定要清除嗎？')) return;
     timeInput.value = '';
@@ -268,6 +293,7 @@
     questionInput.value = '';
     throws = [];
     copiedNote = null;
+    copiedPrompt = null;
     notePreview.open = false;
     startBtn.textContent = '開始擲卦';
     updateStartBtn();

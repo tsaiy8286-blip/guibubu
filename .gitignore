@@ -1,0 +1,11 @@
+# 機密：密碼與金鑰，絕不上傳
+.env
+.env.*
+
+# 作業系統自動產生的雜檔
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 雜項
+*.log

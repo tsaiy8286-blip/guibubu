@@ -1,0 +1,103 @@
+/* 龜卜卜六爻小幫手：古樸書卷風 */
+:root {
+  --paper: #efe4cc;
+  --paper-deep: #e3d4b3;
+  --card: #f6eedb;
+  --ink: #2b2420;
+  --ink-soft: #6b5d50;
+  --line: #cbb994;
+  --cinnabar: #b0352a;
+  --cinnabar-dark: #8e2a21;
+  --page-width: 560px;
+  --font-serif: "Noto Serif TC", "Source Han Serif TC", "Songti TC", "PMingLiU", "MingLiU", serif;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(255, 250, 235, 0.55), transparent 60%),
+    radial-gradient(ellipse at 85% 90%, rgba(170, 140, 90, 0.18), transparent 55%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 頁首 */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 28px 0 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  flex-shrink: 0;
+  background: var(--cinnabar);
+  color: #fdf6e8;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  line-height: 1;
+  box-shadow: inset 0 0 0 2px rgba(253, 246, 232, 0.35);
+}
+
+/* 主內容 */
+.site-main {
+  flex: 1;
+  padding: 24px 0;
+}
+
+.placeholder {
+  padding: 40px 16px;
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* 頁尾 */
+.site-footer {
+  padding: 16px 0 24px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.nowrap { display: inline-block; }
+
+@media (max-width: 380px) {
+  body { font-size: 16px; }
+  .site-title { font-size: 1.35rem; letter-spacing: 0.08em; }
+}

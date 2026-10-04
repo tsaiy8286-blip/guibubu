@@ -1,7 +1,7 @@
 // 執行：node test.js
 var assert = require('assert');
-var data = require('./data.js');
-var yao = require('./yao.js');
+var data = require('./js/data.js');
+var yao = require('./js/yao.js');
 
 // 64 卦的上下卦組合不重複，卦序 1～64 齊全
 var pairs = {};

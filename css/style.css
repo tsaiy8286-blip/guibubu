@@ -86,6 +86,149 @@ body {
   text-align: center;
 }
 
+[hidden] { display: none !important; }
+
+/* 區塊卡片 */
+.panel {
+  padding: 20px 18px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+  margin-bottom: 16px;
+}
+
+.panel-title {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 2px 12px;
+  background: var(--cinnabar);
+  color: #fdf6e8;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+/* 表單欄位 */
+.field { margin-bottom: 16px; }
+
+.field-label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.input {
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fffaf0;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.input:focus {
+  outline: 2px solid var(--cinnabar);
+  outline-offset: 1px;
+}
+
+.input::placeholder { color: #a8998a; }
+
+.time-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 窄螢幕放不下時，「填入現在時間」自動換到下一行 */
+.time-row .input {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+/* 按鈕 */
+.btn {
+  min-height: 48px;
+  padding: 8px 16px;
+  border: 1px solid var(--ink-soft);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn:active { background: var(--paper-deep); }
+
+.btn-small {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+}
+
+.btn-primary {
+  border-color: var(--cinnabar-dark);
+  background: var(--cinnabar);
+  color: #fdf6e8;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.btn-primary:active { background: var(--cinnabar-dark); }
+
+.btn-primary:disabled {
+  border-color: var(--line);
+  background: var(--paper-deep);
+  color: #a8998a;
+  cursor: not-allowed;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* 摘要列 */
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--cinnabar);
+  border-radius: 4px;
+  background: var(--card);
+  margin-bottom: 16px;
+}
+
+.summary-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  font-size: 0.95rem;
+}
+
+.summary-tag {
+  padding: 0 8px;
+  border: 1px solid var(--cinnabar);
+  border-radius: 3px;
+  color: var(--cinnabar);
+  font-size: 0.85rem;
+}
+
+.summary-question {
+  flex-basis: 100%;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
 /* 頁尾 */
 .site-footer {
   padding: 16px 0 24px;

@@ -14,7 +14,53 @@
     </header>
 
     <main class="site-main">
-      <div class="placeholder">起卦區施工中</div>
+      <section class="panel cast-info" id="cast-info">
+        <h2 class="panel-title">起卦資訊</h2>
+
+        <div class="field">
+          <label class="field-label" for="cast-time">時間</label>
+          <div class="time-row">
+            <input class="input" type="datetime-local" id="cast-time">
+            <button class="btn btn-small" type="button" id="fill-now">填入現在時間</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="cast-category">問事類別</label>
+          <select class="input" id="cast-category">
+            <option value="">請選擇</option>
+            <option>工作</option>
+            <option>財運</option>
+            <option>經商</option>
+            <option>感情</option>
+            <option>家庭</option>
+            <option>健康</option>
+            <option>學業</option>
+            <option>官司</option>
+            <option>交友</option>
+            <option>尋人(物)</option>
+            <option>其他</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="cast-question">問事內容</label>
+          <input class="input" type="text" id="cast-question" placeholder="這次面試能否錄取？">
+        </div>
+
+        <button class="btn btn-primary btn-block" type="button" id="start-cast" disabled>開始擲卦</button>
+      </section>
+
+      <section class="summary" id="summary" hidden>
+        <div class="summary-text">
+          <span id="summary-time"></span>
+          <span class="summary-tag" id="summary-category"></span>
+          <span class="summary-question" id="summary-question"></span>
+        </div>
+        <button class="btn btn-small" type="button" id="edit-info">修改</button>
+      </section>
+
+      <div class="placeholder" id="throw-area" hidden>擲卦區施工中</div>
     </main>
 
     <footer class="site-footer">
@@ -24,5 +70,6 @@
 
   <script src="js/data.js"></script>
   <script src="js/yao.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

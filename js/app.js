@@ -29,6 +29,7 @@
 
   function updateStartBtn() {
     startBtn.disabled = !isFilled();
+    saveState();
   }
 
   function showSummary() {
@@ -55,12 +56,14 @@
     startBtn.textContent = '完成修改';
     showSummary();
     if (throws.length === 6) renderNote();
+    saveState();
   });
 
   editBtn.addEventListener('click', function () {
     summary.hidden = true;
     castInfo.hidden = false;
     timeInput.focus();
+    saveState();
   });
 
   updateStartBtn();
@@ -141,6 +144,7 @@
     undoBtn.disabled = n === 0;
     resultArea.hidden = !done;
     if (done) renderResult();
+    saveState();
   }
 
   // 結果區
@@ -267,6 +271,7 @@
         copiedNote = note;
         copyBtn.textContent = '✓ 已複製';
         copyFail.hidden = true;
+        saveState();
       } else {
         copyFail.hidden = false;
       }
@@ -280,6 +285,7 @@
         copiedPrompt = prompt;
         copyPromptBtn.textContent = '✓ 已複製';
         copyFail.hidden = true;
+        saveState();
       } else {
         copyFail.hidden = false;
       }
@@ -304,5 +310,65 @@
     window.scrollTo(0, 0);
   });
 
+  // 中途中斷接續：這一卦暫存在本機瀏覽器，重新打開時接著做；「再起一卦」清空後就刪掉
+  var STORAGE_KEY = 'guibubu-current-cast';
+  var ready = false;
+
+  function saveState() {
+    if (!ready) return;
+    var started = startBtn.textContent === '完成修改';
+    var empty = !timeInput.value && !categorySelect.value && !questionInput.value && throws.length === 0;
+    try {
+      if (empty) {
+        localStorage.removeItem(STORAGE_KEY);
+        return;
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        time: timeInput.value,
+        category: categorySelect.value,
+        question: questionInput.value,
+        started: started,
+        editing: started && !castInfo.hidden,
+        throws: throws,
+        copiedNote: copiedNote,
+        copiedPrompt: copiedPrompt
+      }));
+    } catch (e) {
+      // 瀏覽器不讓存（例如無痕模式空間滿了）就算了，不影響使用
+    }
+  }
+
+  function restoreState() {
+    var s;
+    try {
+      s = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    } catch (e) {
+      s = null;
+    }
+    if (!s || typeof s !== 'object') return;
+
+    timeInput.value = s.time || '';
+    categorySelect.value = s.category || '';
+    questionInput.value = s.question || '';
+    if (Array.isArray(s.throws)) {
+      throws = s.throws.filter(function (b) {
+        return b === 0 || b === 1 || b === 2 || b === 3;
+      }).slice(0, 6);
+    }
+    copiedNote = s.copiedNote || null;
+    copiedPrompt = s.copiedPrompt || null;
+    if (s.started && isFilled()) {
+      startBtn.textContent = '完成修改';
+      showSummary();
+      if (s.editing) {
+        summary.hidden = true;
+        castInfo.hidden = false;
+      }
+    }
+  }
+
+  restoreState();
+  ready = true;
+  updateStartBtn();
   renderThrows();
 })();

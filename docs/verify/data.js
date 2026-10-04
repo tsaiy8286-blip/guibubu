@@ -97,6 +97,45 @@ window.VERIFY_DATA = {
               crossEnv: false
             }
           ]
+        },
+        {
+          id: "03-throw",
+          title: "03 擲卦區",
+          items: [
+            {
+              id: "v1/03-throw/look-and-feel",
+              text: "用電腦雙擊 `index.html`，填好起卦資訊按「開始擲卦」，隨意點幾下擲卦按鈕（記得點到 3正面 和 3背面）。\n\n預期：\n- 頁首網站名稱是「龜卜卜線上求卦」\n- 四顆按鈕是「3正面、2正面、1正面、3背面」，下方小錢幣先畫寫「字」的空心圓、再畫黑色實心圓（背），你看得懂、覺得順眼\n- 按鈕下方有「錢幣正面與反面判別方式」備註，文字正確、大小好讀\n- 長出來的爻：陽爻一長條、陰爻兩短條，粗細長短像你熟悉的卦象\n- 動爻是朱紅色並標 ○ 或 ✕，靜爻是墨黑色，一眼分得出來\n- 每一爻右邊的解答文字好讀",
+              spec: { ref: "docs/cards/v1/03-throw.md", quote: "每個按鈕下方畫三枚小錢幣（背＝實心圓、字＝空心圓中間寫「寶」）" },
+              risk: "high",
+              riskReason: "錢幣和卦象的樣子好不好看、好不好認，只有你能判斷",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: false, how: "" } },
+              manualOnly: true,
+              manualOnlyReason: "外觀感受 AI 無法判斷",
+              crossEnv: false
+            },
+            {
+              id: "v1/03-throw/own-phone",
+              text: "**這項要等存檔並推上去之後才能驗。**\n\n用你自己的手機打開 https://tsaiy8286-blip.github.io/guibubu/ ，填好起卦資訊，照桌上錢幣擲六次。\n\n預期：\n- 四顆按鈕一排放得下，手指好點、不會點錯\n- 卦象和解答文字清楚，畫面不會左右滑動",
+              spec: { ref: "docs/cards/v1/03-throw.md", quote: "手機尺寸下看起來正常，四個按鈕好點" },
+              risk: "medium",
+              riskReason: "電腦模擬過手機寬度，但實機手指點起來的感覺只有你知道",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: false, how: "" } },
+              manualOnly: true,
+              manualOnlyReason: "AI 沒有你的手機",
+              crossEnv: true
+            },
+            {
+              id: "v1/03-throw/throw-undo-edit",
+              text: "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n用電腦打開 `index.html`，填好起卦資訊按「開始擲卦」，依序點：3背面、3正面、1正面、2正面、2正面、1正面。然後按「退回上一步」一次、再點 3背面；最後按「修改」改問事再按「完成修改」。\n\n預期：\n- 按鈕上只寫 3正面～3背面，沒有老陰、少陽等答案\n- 標題依序「第 1 擲（初爻）」…「第 6 擲（上爻）」，第一擲畫在最下面\n- 解答：3背0字＝老陽動爻 ○、0背3字＝老陰動爻 ✕、2背1字＝少陰靜爻、1背2字＝少陽靜爻\n- 六擲後標題變「六擲完成」、擲卦按鈕收起、出現「結果區施工中」；退回一步按鈕回來，可重擲第六擲\n- 修改問事後，六爻都還在\n- 一直按「退回上一步」可退回到第一擲",
+              spec: { ref: "docs/cards/v1/03-throw.md", quote: "「退回上一步」可一路退回第一擲。六擲完成後擲卦按鈕收起" },
+              risk: "low",
+              riskReason: "AI 已實際點過整條流程，結果都對",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: true, how: "Claude in Chrome 打開本機預覽：改名後按鈕為 3正面／2正面／1正面／3背面、錢幣依序 字字字／字字●／字●●／●●●；實際點 3背/0背/2背 看到由下往上長爻、動爻朱紅 ○ ✕、解答文字正確；續擲到六爻後標題「六擲完成」、按鈕收起、結果區占位出現；退回後按鈕回來並可重擲；修改問事後六爻保留；退回六次回到第 1 擲；375px 寬無水平捲動、按鈕 70×72px；console 無錯誤" } },
+              manualOnly: false,
+              manualOnlyReason: "",
+              crossEnv: false
+            }
+          ]
         }
       ]
     }

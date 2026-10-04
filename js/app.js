@@ -63,4 +63,83 @@
   });
 
   updateStartBtn();
+
+  // 擲卦區
+  var throwTitle = document.getElementById('throw-title');
+  var throwButtons = document.getElementById('throw-buttons');
+  var hexagramLog = document.getElementById('hexagram-log');
+  var undoBtn = document.getElementById('undo-throw');
+  var resultArea = document.getElementById('result-area');
+  var coinNote = document.getElementById('coin-note');
+
+  // 已擲出的背數，由第一擲（初爻）到第六擲（上爻）
+  var throws = [];
+
+  // 每個按鈕下方畫三枚錢幣：先畫字（空心圓寫「字」），再畫背（實心圓）
+  Array.prototype.forEach.call(throwButtons.querySelectorAll('.throw-btn'), function (btn) {
+    var backs = Number(btn.getAttribute('data-backs'));
+    var coins = btn.querySelector('.coins');
+    for (var i = 0; i < 3; i++) {
+      var coin = document.createElement('span');
+      if (i < 3 - backs) {
+        coin.className = 'coin coin-face';
+        coin.textContent = '字';
+      } else {
+        coin.className = 'coin coin-back';
+      }
+      coins.appendChild(coin);
+    }
+    btn.addEventListener('click', function () {
+      if (throws.length >= 6) return;
+      throws.push(backs);
+      renderThrows();
+    });
+  });
+
+  undoBtn.addEventListener('click', function () {
+    throws.pop();
+    renderThrows();
+  });
+
+  function lineRow(backs, index) {
+    var line = throwToLine(backs);
+    var li = document.createElement('li');
+    li.className = 'yao-row' + (line.moving ? ' is-moving' : '');
+
+    var bar = document.createElement('span');
+    bar.className = 'yao ' + (line.yang ? 'yao-yang' : 'yao-yin');
+    bar.innerHTML = line.yang ? '<i></i>' : '<i></i><i></i>';
+
+    var mark = document.createElement('span');
+    mark.className = 'yao-mark';
+    mark.textContent = line.mark;
+
+    var note = document.createElement('span');
+    note.className = 'yao-note';
+    note.innerHTML = '第 ' + (index + 1) + ' 擲：' + throwLabel(backs) +
+      ' <span class="nowrap">＝ ' + line.name + '，' + (line.moving ? '動爻' : '靜爻') + '</span>';
+
+    li.appendChild(bar);
+    li.appendChild(mark);
+    li.appendChild(note);
+    return li;
+  }
+
+  function renderThrows() {
+    var n = throws.length;
+    hexagramLog.innerHTML = '';
+    throws.forEach(function (backs, i) {
+      hexagramLog.appendChild(lineRow(backs, i));
+    });
+    hexagramLog.hidden = n === 0;
+
+    var done = n === 6;
+    throwTitle.textContent = done ? '六擲完成' : '第 ' + (n + 1) + ' 擲（' + POSITIONS[n] + '）';
+    throwButtons.hidden = done;
+    coinNote.hidden = done;
+    undoBtn.disabled = n === 0;
+    resultArea.hidden = !done;
+  }
+
+  renderThrows();
 })();

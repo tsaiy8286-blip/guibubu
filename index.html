@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>龜卜卜六爻小幫手</title>
+  <title>龜卜卜線上求卦</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="page">
     <header class="site-header">
-      <h1 class="site-title">龜卜卜六爻小幫手</h1>
+      <h1 class="site-title">龜卜卜線上求卦</h1>
       <span class="seal" aria-hidden="true">易</span>
     </header>
 
@@ -60,7 +60,30 @@
         <button class="btn btn-small" type="button" id="edit-info">修改</button>
       </section>
 
-      <div class="placeholder" id="throw-area" hidden>擲卦區施工中</div>
+      <section class="panel throw-area" id="throw-area" hidden>
+        <h2 class="panel-title" id="throw-title">第 1 擲（初爻）</h2>
+
+        <div class="throw-buttons" id="throw-buttons">
+          <button class="throw-btn" type="button" data-backs="0">3正面<span class="coins" aria-hidden="true"></span></button>
+          <button class="throw-btn" type="button" data-backs="1">2正面<span class="coins" aria-hidden="true"></span></button>
+          <button class="throw-btn" type="button" data-backs="2">1正面<span class="coins" aria-hidden="true"></span></button>
+          <button class="throw-btn" type="button" data-backs="3">3背面<span class="coins" aria-hidden="true"></span></button>
+        </div>
+
+        <div class="coin-note" id="coin-note">
+          <p>備註：錢幣正面與反面判別方式如下：</p>
+          <ul>
+            <li><strong>正面</strong>：鑄有漢字「乾隆通寶」之一面，或硬幣的「人頭面」。</li>
+            <li><strong>反面</strong>：鑄有「數字」之一面，或無漢字（僅有滿文／圖騰）之一面。</li>
+          </ul>
+        </div>
+
+        <ol class="hexagram-log" id="hexagram-log"></ol>
+
+        <button class="btn btn-block" type="button" id="undo-throw" disabled>退回上一步</button>
+      </section>
+
+      <div class="placeholder" id="result-area" hidden>結果區施工中</div>
     </main>
 
     <footer class="site-footer">

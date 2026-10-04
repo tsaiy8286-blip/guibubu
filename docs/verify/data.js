@@ -136,6 +136,56 @@ window.VERIFY_DATA = {
               crossEnv: false
             }
           ]
+        },
+        {
+          id: "04-result",
+          title: "04 結果區",
+          items: [
+            {
+              id: "v1/04-result/judgment-check",
+              text: "用電腦雙擊 `index.html`，填好起卦資訊按「開始擲卦」，隨意擲幾卦（每擲完一卦，按「退回上一步」幾次再換別的按鈕，就能看到不同的卦）。\n\n預期：\n- 挑 2～3 卦，對照王思迅老師教材或《周易》原文，卦名、卦序、上下卦、卦辭都正確",
+              spec: { ref: "docs/cards/v1/04-result.md", quote: "抽查幾卦卦辭，對照王思迅老師教材或《周易》原文" },
+              risk: "high",
+              riskReason: "卦辭是手打輸入的，只有你手上有老師的教材可以對照",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: false, how: "" } },
+              manualOnly: true,
+              manualOnlyReason: "AI 沒有老師的教材，無法替你對照",
+              crossEnv: false
+            },
+            {
+              id: "v1/04-result/look-and-feel",
+              text: "接著上一項，擲出一卦有動爻的（例如依序點：1正面、3背面、1正面、2正面、3背面、2正面），往下捲到「卦象結果」。\n\n預期：\n- 像你給的參考圖：兩個卦象上方各有卦名（訟、晉），中間「→」，兩邊的爻一行一行對齊\n- 本卦動爻朱紅並標 ○ 或 ✕；變卦裡變出來的爻也是朱紅\n- 卦象下方朱紅大字「占得：訟　之　晉」\n- 下方的卦名、卦辭、動爻那一行的大小與排版你覺得順眼",
+              spec: { ref: "SPEC.md 結果區", quote: "本卦與變卦左右並排，中間一個箭頭「→」。" },
+              risk: "high",
+              riskReason: "好不好看、好不好讀只有你能判斷",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: false, how: "" } },
+              manualOnly: true,
+              manualOnlyReason: "外觀感受 AI 無法判斷",
+              crossEnv: false
+            },
+            {
+              id: "v1/04-result/own-phone",
+              text: "**這項要等存檔並推上去之後才能驗。**\n\n用你自己的手機打開 https://tsaiy8286-blip.github.io/guibubu/ ，擲一卦有動爻的。\n\n預期：\n- 本卦、變卦並排放得下，不擠、不跑版，畫面不會左右滑動\n- 卦名和卦辭的字不會太小",
+              spec: { ref: "docs/cards/v1/04-result.md", quote: "手機尺寸下本卦、變卦並排不擠、不跑版" },
+              risk: "medium",
+              riskReason: "電腦模擬過 320px 與 375px 寬，但實機字體大小可能不同",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: false, how: "" } },
+              manualOnly: true,
+              manualOnlyReason: "AI 沒有你的手機",
+              crossEnv: true
+            },
+            {
+              id: "v1/04-result/known-cases",
+              text: "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n用電腦打開 `index.html`，填好起卦資訊按「開始擲卦」，分別擲下面三組（每組擲完按「退回上一步」退到第一擲再擲下一組）：\n\n1. 1正面、3背面、1正面、2正面、3背面、2正面\n2. 六次都點 2正面\n3. 六次都點 3背面\n\n預期：\n- 第 1 組：本卦「第6卦　天水訟（上乾下坎）」、變卦「第35卦　火地晉（上離下坤）」、動爻：二爻、五爻；「占得：訟　之　晉」；訟卦辭「訟：有孚，窒惕，中吉，終凶。利見大人，不利涉大川。」\n- 第 2 組：「第1卦　乾為天」，只有本卦置中，寫「占得：乾」與「六爻安靜，無變卦」\n- 第 3 組：乾為天 → 坤為地，六爻全部朱紅\n- 按「退回上一步」時結果區會收起",
+              spec: { ref: "docs/cards/v1/04-result.md", quote: "依序點 2背、3背、2背、1背、3背、1背 → 本卦「第6卦　天水訟（上乾下坎）」、變卦「第35卦　火地晉（上離下坤）」" },
+              risk: "low",
+              riskReason: "AI 已實際擲過這三組，結果都對",
+              coverage: { auto: { covered: false, ref: "" }, agent: { covered: true, how: "Claude in Chrome 打開本機預覽：擲 2背3背2背1背3背1背 得天水訟→火地晉、動爻二爻五爻、卦辭正確、本卦變卦六爻對齊；改版後另擲節之升：卦名節／升、占得：節　之　升、變卦的變爻朱紅、無爻位爻題、下方文字與使用者提供一致；六次 1背 得乾為天、只顯示本卦與「六爻安靜，無變卦」；六次 3背 得乾為天→坤為地、六爻朱紅；退回一步結果區收起；320px、375px 寬皆無左右捲動；node test.js 通過；console 無錯誤" } },
+              manualOnly: false,
+              manualOnlyReason: "",
+              crossEnv: false
+            }
+          ]
         }
       ]
     }

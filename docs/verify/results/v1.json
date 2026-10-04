@@ -1,0 +1,92 @@
+{
+  "project": "龜卜卜六爻小幫手",
+  "changeId": "v1",
+  "changeName": "第一版：起卦小工具",
+  "exportedAt": "2026-10-04T07:54:18.448Z",
+  "environments": [
+    {
+      "id": "desktop",
+      "label": "電腦瀏覽器"
+    },
+    {
+      "id": "phone",
+      "label": "自己的手機"
+    }
+  ],
+  "summary": {
+    "total": 13,
+    "pass": 12,
+    "fail": 1,
+    "skip": 0,
+    "untested": 0
+  },
+  "verdict": {
+    "v1/01-page-foundation/look-and-feel": {
+      "status": "pass",
+      "note": "標題已修改為\"龜卜卜線上求卦\"",
+      "envs": {}
+    },
+    "v1/01-page-foundation/own-phone-live": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/01-page-foundation/layout": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/02-cast-info/look-and-feel": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/02-cast-info/own-phone": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/02-cast-info/fill-start-edit": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/03-throw/look-and-feel": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/03-throw/own-phone": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/03-throw/throw-undo-edit": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/04-result/judgment-check": {
+      "status": "fail",
+      "note": "我剛才已給妳王思迅老師易經白話講座電子書md檔，請參考並考慮是否補充王老師的說明。",
+      "envs": {}
+    },
+    "v1/04-result/look-and-feel": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/04-result/own-phone": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "v1/04-result/known-cases": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    }
+  },
+  "ticketNotes": {},
+  "changeNote": ""
+}

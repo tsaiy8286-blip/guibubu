@@ -242,8 +242,8 @@ window.VERIFY_DATA = {
     {
       id: "ai-prompt",
       name: "AI 解卦提示詞",
-      status: "verifying",
-      closedAt: null,
+      status: "closed",
+      closedAt: "2026-10-04",
       specRef: "docs/SPEC.md",
       allTicketsLoaded: true,
 

@@ -350,6 +350,111 @@ body {
 .is-moving .yao-mark,
 .is-moving .yao-note { color: var(--cinnabar); }
 
+/* 結果區 */
+.result-figures {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 12px;
+  padding: 16px 8px 18px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fffaf0;
+}
+
+.figure-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.figure-name {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 每一行固定高度，本卦與變卦的爻才會一對一對齊 */
+.figure-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 18px;
+}
+
+.figure-row .yao-mark { line-height: 1; }
+
+.yao-lg {
+  width: 96px;
+  height: 16px;
+}
+
+/* 變卦不標 ○ ✕，但留出同樣寬度，兩邊卦象才會對稱 */
+.figure-changed .yao-mark { visibility: hidden; }
+
+.figure-arrow {
+  font-size: 1.4rem;
+  color: var(--ink-soft);
+}
+
+.result-zhande {
+  margin: 0 0 14px;
+  text-align: center;
+  color: var(--cinnabar);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.result-quiet {
+  margin: -6px 0 16px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.result-gua { margin-bottom: 14px; }
+
+.gua-name {
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+
+.gua-judgment {
+  margin: 0;
+  padding: 6px 12px;
+  border-left: 3px solid var(--line);
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.result-moving {
+  margin: 0;
+  color: var(--cinnabar);
+  font-weight: 700;
+}
+
+/* 手機：卦象縮小一點才放得下 */
+@media (max-width: 420px) {
+  .result-figures { gap: 10px; }
+  .yao-lg { width: 76px; }
+}
+
+@media (max-width: 360px) {
+  .result-figures { gap: 6px; }
+  .yao-lg { width: 60px; }
+}
+
 /* 頁尾 */
 .site-footer {
   padding: 16px 0 24px;

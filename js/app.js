@@ -139,6 +139,63 @@
     coinNote.hidden = done;
     undoBtn.disabled = n === 0;
     resultArea.hidden = !done;
+    if (done) renderResult();
+  }
+
+  // 結果區
+  function figureRow(yang, moving, mark) {
+    var li = document.createElement('li');
+    li.className = 'figure-row' + (moving ? ' is-moving' : '');
+    var bar = document.createElement('span');
+    bar.className = 'yao yao-lg ' + (yang ? 'yao-yang' : 'yao-yin');
+    bar.innerHTML = yang ? '<i></i>' : '<i></i><i></i>';
+    li.appendChild(bar);
+    var m = document.createElement('span');
+    m.className = 'yao-mark';
+    m.textContent = mark;
+    li.appendChild(m);
+    return li;
+  }
+
+  function guaTitle(label, g) {
+    return label + '：第' + g.number + '卦　' + g.fullName + '（上' + g.upper + '下' + g.lower + '）';
+  }
+
+  function renderResult() {
+    var result = cast(throws);
+    var primaryFig = document.getElementById('figure-primary');
+    var changedFig = document.getElementById('figure-changed');
+    var hasChange = !!result.changed;
+    primaryFig.innerHTML = '';
+    changedFig.innerHTML = '';
+
+    // 由上爻往下畫，初爻在最下面；動爻在本卦與變卦都畫成朱紅
+    for (var i = 5; i >= 0; i--) {
+      var l = result.lines[i];
+      primaryFig.appendChild(figureRow(l.yang, l.moving, l.mark));
+      changedFig.appendChild(figureRow(l.moving ? !l.yang : l.yang, l.moving, ''));
+    }
+
+    document.getElementById('figure-primary-name').textContent = result.primary.name;
+    document.getElementById('figure-arrow').hidden = !hasChange;
+    document.getElementById('figure-changed-col').hidden = !hasChange;
+    document.getElementById('result-quiet').hidden = hasChange;
+    document.getElementById('result-zhande').textContent = hasChange
+      ? '占得：' + result.primary.name + '　之　' + result.changed.name
+      : '占得：' + result.primary.name;
+
+    document.getElementById('primary-name').textContent = guaTitle('本卦', result.primary);
+    document.getElementById('primary-judgment').textContent = result.primary.judgment;
+    document.getElementById('changed-block').hidden = !hasChange;
+    if (hasChange) {
+      document.getElementById('figure-changed-name').textContent = result.changed.name;
+      document.getElementById('changed-name').textContent = guaTitle('變卦', result.changed);
+      document.getElementById('changed-judgment').textContent = result.changed.judgment;
+    }
+
+    var movingEl = document.getElementById('result-moving');
+    movingEl.hidden = !hasChange;
+    movingEl.textContent = '動爻：' + result.moving.map(function (i) { return POSITIONS[i]; }).join('、');
   }
 
   renderThrows();

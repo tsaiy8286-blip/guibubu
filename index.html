@@ -83,7 +83,40 @@
         <button class="btn btn-block" type="button" id="undo-throw" disabled>退回上一步</button>
       </section>
 
-      <div class="placeholder" id="result-area" hidden>結果區施工中</div>
+      <div id="result-area" hidden>
+        <section class="panel result">
+          <h2 class="panel-title">卦象結果</h2>
+
+          <div class="result-figures" id="result-figures">
+            <div class="figure-col">
+              <p class="figure-name" id="figure-primary-name"></p>
+              <ol class="figure figure-primary" id="figure-primary"></ol>
+            </div>
+            <span class="figure-arrow" id="figure-arrow" aria-hidden="true">→</span>
+            <div class="figure-col" id="figure-changed-col">
+              <p class="figure-name" id="figure-changed-name"></p>
+              <ol class="figure figure-changed" id="figure-changed"></ol>
+            </div>
+          </div>
+
+          <p class="result-zhande" id="result-zhande"></p>
+          <p class="result-quiet" id="result-quiet">六爻安靜，無變卦</p>
+
+          <div class="result-gua">
+            <p class="gua-name" id="primary-name"></p>
+            <blockquote class="gua-judgment" id="primary-judgment"></blockquote>
+          </div>
+
+          <div class="result-gua" id="changed-block">
+            <p class="gua-name" id="changed-name"></p>
+            <blockquote class="gua-judgment" id="changed-judgment"></blockquote>
+          </div>
+
+          <p class="result-moving" id="result-moving"></p>
+        </section>
+
+        <div class="placeholder">複製區施工中</div>
+      </div>
     </main>
 
     <footer class="site-footer">

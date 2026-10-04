@@ -455,15 +455,6 @@ body {
   .yao-lg { width: 60px; }
 }
 
-/* 頁尾 */
-.site-footer {
-  padding: 16px 0 24px;
-  border-top: 1px solid var(--line);
-  color: var(--ink-soft);
-  font-size: 0.8rem;
-  text-align: center;
-}
-
 .nowrap { display: inline-block; }
 
 @media (max-width: 380px) {

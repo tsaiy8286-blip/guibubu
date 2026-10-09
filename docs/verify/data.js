@@ -339,7 +339,7 @@ window.VERIFY_DATA = {
       "name": "星夜改版＋卦象牌卡",
       "status": "verifying",
       "specRef": "docs/SPEC.md",
-      "allTicketsLoaded": false,
+      "allTicketsLoaded": true,
       "tickets": [
         {
           "id": "01-starry-look",
@@ -707,6 +707,110 @@ window.VERIFY_DATA = {
               "manualOnly": true,
               "manualOnlyReason": "手機鍵盤行為只能在自己手機上確認",
               "crossEnv": true
+            }
+          ]
+        },
+        {
+          "id": "05-keepsake",
+          "title": "05 下載紀念圖",
+          "items": [
+            {
+              "id": "starry-cards/05-keepsake/download-look",
+              "text": "用瀏覽器打開 **http://localhost:8765/**（不要直接雙擊 index.html，那樣瀏覽器不允許下載）。擲出蹇之恆（1正面、3正面、2正面、3正面、3背面、1正面），在「我的啟發」寫一段話，按「⬇ 下載紀念圖」，打開下載資料夾裡的圖。\n\n預期：\n- 按鈕顯示「製作中…」→「✓ 已下載」，檔名「龜卜卜_蹇之恆_日期.jpg」\n- 圖上：「占得 蹇 之 恆」、左蹇右恆（恆的人物翻轉、字是正的）、啟發方框文字完整、日期是起卦那天\n- **圖上沒有問事內容**\n- 整體好看、適合留念",
+              "spec": {
+                "ref": "docs/cards/starry-cards/05-keepsake.md",
+                "quote": "按下顯示「製作中…」，接著下載一張 JPG"
+              },
+              "risk": "high",
+              "riskReason": "下載與成品美感只能本人確認",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "AI 已在無視窗 Chrome 實際下載並打開圖檔核對內容（見任務卡驗證證據），但美感與在你電腦上的下載行為需本人確認"
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "成品好不好看、實際下載到自己電腦只能本人確認",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/05-keepsake/no-insight-and-quiet",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n清空「我的啟發」再下載一次；接著退回重擲，六次都點 **2正面**（乾）再下載。\n\n預期：\n- 沒寫啟發：圖上沒有啟發方框\n- 乾：只有一張乾卦牌卡，標題「乾」，檔名「龜卜卜_乾_日期.jpg」",
+              "spec": {
+                "ref": "docs/cards/starry-cards/05-keepsake.md",
+                "quote": "沒有動爻時只有一張牌卡、標題只寫本卦名"
+              },
+              "risk": "low",
+              "riskReason": "AI 已實際下載並打開圖檔核對",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "清空啟發下載 → 無方框；六次 2正面下載 → 龜卜卜_乾_20261009.jpg，單張乾卦、標題「乾」"
+                }
+              },
+              "manualOnly": false,
+              "manualOnlyReason": "",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/05-keepsake/phone",
+              "text": "（推上網站後）用自己的手機擲一卦，按「⬇ 下載紀念圖」。\n\n預期：\n- 圖能存到手機（iPhone 可能是開新頁顯示圖片，長按「儲存影像」）",
+              "spec": {
+                "ref": "docs/cards/starry-cards/05-keepsake.md",
+                "quote": "在自己手機上下載：能存到手機"
+              },
+              "risk": "medium",
+              "riskReason": "各家手機下載方式不同，只能實機確認",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "無（手機下載行為無法模擬）"
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "手機下載只能在自己手機上確認",
+              "crossEnv": true
+            }
+          ]
+        },
+        {
+          "id": "integration",
+          "title": "整體走一遍",
+          "items": [
+            {
+              "id": "starry-cards/integration/full-flow",
+              "text": "用電腦打開 **http://localhost:8765/**，從頭走一次：\n\n1. 填起卦資訊 → 開始擲卦，背景是流金星空\n2. 擲完六爻 → 看到線條圖、兩張牌卡（變卦翻轉），點牌卡放大再關閉\n3. 寫「我的啟發」→ 下載紀念圖 → 複製到 Obsidian\n4. 按「再起一卦」\n\n預期：\n- 每一步都順，畫面風格一致、看起來專業\n- 紀念圖與筆記裡的啟發一致\n- 再起一卦後一切清空，回到起卦資訊",
+              "spec": {
+                "ref": "docs/SPEC.md",
+                "quote": "全站改為「星夜書齋」風格；結果區加 64 卦形象牌卡；新增「我的啟發」與下載紀念圖"
+              },
+              "risk": "medium",
+              "riskReason": "整體體驗只能本人判斷",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "各卡已分別由 AI 實際操作驗過；整體一起走的感受需本人確認"
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "整體感受只能本人判斷",
+              "crossEnv": false
             }
           ]
         }

@@ -2,7 +2,7 @@
   "project": "龜卜卜六爻小幫手",
   "changeId": "starry-cards",
   "changeName": "星夜改版＋卦象牌卡",
-  "exportedAt": "2026-10-09T15:52:57.786Z",
+  "exportedAt": "2026-10-09T15:58:56.645Z",
   "environments": [
     {
       "id": "desktop",
@@ -14,11 +14,11 @@
     }
   ],
   "summary": {
-    "total": 15,
+    "total": 19,
     "pass": 8,
-    "fail": 0,
-    "skip": 7,
-    "untested": 0
+    "fail": 1,
+    "skip": 8,
+    "untested": 2
   },
   "verdict": {
     "starry-cards/01-starry-look/look-and-feel": {
@@ -93,6 +93,16 @@
     },
     "starry-cards/04-insight/phone": {
       "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "starry-cards/05-keepsake/download-look": {
+      "status": "fail",
+      "note": "無變卦，只有一張圖，顯示\"下載失敗\"",
+      "envs": {}
+    },
+    "starry-cards/05-keepsake/phone": {
+      "status": "skip",
       "note": "",
       "envs": {}
     }

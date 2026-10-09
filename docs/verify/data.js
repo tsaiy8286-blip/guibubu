@@ -333,6 +333,113 @@ window.VERIFY_DATA = {
           ]
         }
       ]
+    },
+    {
+      "id": "starry-cards",
+      "name": "星夜改版＋卦象牌卡",
+      "status": "verifying",
+      "specRef": "docs/SPEC.md",
+      "allTicketsLoaded": false,
+      "tickets": [
+        {
+          "id": "01-starry-look",
+          "title": "01 星夜外觀",
+          "items": [
+            {
+              "id": "starry-cards/01-starry-look/look-and-feel",
+              "text": "用電腦到 `D:\\Projects\\龜卜卜(程式碼)` 雙擊 `index.html`，從上到下看一遍（可以先照第 3 項擲一卦，才看得到全部區塊）。\n\n預期：\n- 深藍夜空底、米白字、古金色細線與角飾，有「星夜書齋」的專業感，是你在試作頁選的 A 款方向\n- 頁首網站名稱、易印、標語「觀象・知時・自省」大小位置順眼\n- 字在深色底上讀起來不吃力\n- （背景星空動畫是下一張卡，這張只有靜止的深藍）",
+              "spec": {
+                "ref": "SPEC.md 全站共通",
+                "quote": "星夜書齋……深藍夜空底、米白文字、古金色細線與點綴、朱紅點綴"
+              },
+              "risk": "high",
+              "riskReason": "整體風格好不好看只有你能判斷",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": ""
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "好不好看、讀起來舒不舒服是主觀感受",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/01-starry-look/panels-and-buttons",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開首頁，看起卦資訊區。\n\n預期：\n- 區塊是深藍半透明底＋金色細框，左上、右下各一個金色角飾，標題前有「一」圓圈\n- 三欄沒填時「開始擲卦」是灰色；點進輸入框時框線變金色\n- 填好後「開始擲卦」變朱紅漸層；「填入現在時間」是金框按鈕",
+              "spec": {
+                "ref": "docs/cards/starry-cards/01-starry-look.md",
+                "quote": "四個區塊都是深藍半透明底、金色細框、左上右下金色角飾，標題前有一～四圓圈編號"
+              },
+              "risk": "low",
+              "riskReason": "AI 已實際打開截圖確認",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "Claude in Chrome 打開本機預覽截圖：起卦資訊區金框、角飾、「一」編號；空白時開始擲卦灰色停用，填好後變朱紅漸層；填入現在時間為金框"
+                }
+              },
+              "manualOnly": false,
+              "manualOnlyReason": "",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/01-starry-look/full-flow",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n填好起卦資訊按「開始擲卦」，依序點：**1正面、3正面、2正面、3正面、3背面、1正面**。\n\n預期：\n- 擲卦區標題「二 第 1 擲（初爻）」一路變到「六擲完成」，前面的「二」一直都在\n- 結果區「三 卦象」：爻象線條米白、動爻朱紅並標 ○ ✕；「占得：蹇　之　恆」、「動爻：二爻、四爻、五爻」\n- 「四 保存」區：「複製到 Obsidian」朱紅、其他按鈕金框，複製功能照常\n- 按「退回上一步」結果區收起；重新整理網頁，這一卦會接續",
+              "spec": {
+                "ref": "docs/cards/starry-cards/01-starry-look.md",
+                "quote": "整套流程（起卦→擲六次→結果→複製到 Obsidian→再起一卦、中途重新整理接續）都和改版前一樣正常"
+              },
+              "risk": "medium",
+              "riskReason": "改了整頁樣式與標題結構，要確認原功能沒壞；AI 已實際走過",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "Claude in Chrome 實際擲蹇之恆：擲卦標題由程式更新時「二」編號仍在；爻象米白、動爻朱紅並標○✕；占得蹇之恆、動爻二四五；退回上一步結果收起、再擲恢復；重新整理後完整接續；筆記預覽正確；console 無錯誤"
+                }
+              },
+              "manualOnly": false,
+              "manualOnlyReason": "",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/01-starry-look/phone",
+              "text": "用自己的手機看（推上網站後；或先在電腦把瀏覽器視窗拉窄看看）。\n\n預期：\n- 沒有左右捲動，區塊與按鈕不擠出畫面\n- 日期選擇器、問事類別下拉選單在深色畫面下看得清楚、好操作\n- 整體在手機上看起來舒服",
+              "spec": {
+                "ref": "SPEC.md 全站共通",
+                "quote": "手機優先設計……按鈕要大到手指好點。"
+              },
+              "risk": "medium",
+              "riskReason": "AI 只用 375px、320px 寬模擬過，實機的日期與下拉選單外觀因手機而異",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "僅模擬：375px、320px 寬 iframe 無左右捲動、按鈕高 48px（非實機）"
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "實機的原生日期、下拉選單外觀只能在自己手機上確認",
+              "crossEnv": true
+            }
+          ]
+        }
+      ]
     }
   ]
 };

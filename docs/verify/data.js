@@ -536,6 +536,104 @@ window.VERIFY_DATA = {
               "crossEnv": true
             }
           ]
+        },
+        {
+          "id": "03-hexagram-cards",
+          "title": "03 卦象牌卡",
+          "items": [
+            {
+              "id": "starry-cards/03-hexagram-cards/look",
+              "text": "打開網站，起卦後依序點：**1正面、3正面、2正面、3正面、3背面、1正面**（蹇之恆）。\n\n預期：\n- 爻象線條圖比以前小一號，下方出現兩張牌卡：左「第三十九卦 水山蹇」、右「第三十二卦 雷風恆」，中間金色箭頭，下方小字「本卦」「變卦」\n- 變卦的人物轉向左邊、和本卦人物面對面；卡上的卦名、卦畫、下方那句話都是正的（沒有反字）\n- 整體大小、金框、陰影看起來順眼",
+              "spec": {
+                "ref": "docs/cards/starry-cards/03-hexagram-cards.md",
+                "quote": "爻象線條圖下方出現兩張形象牌卡：左本卦、右變卦，中間金色箭頭"
+              },
+              "risk": "medium",
+              "riskReason": "好不好看只能人判斷",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "AI 已截圖確認牌卡對應正確、鏡向正確、字沒有反，但美感需本人判斷"
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "大小與美感只能由使用者判斷",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/03-hexagram-cards/zoom",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n接著點任一張牌卡，再點一下。\n\n預期：\n- 牌卡全畫面放大（變卦放大後一樣是翻轉的）\n- 再點一下就關閉，回到原來位置",
+              "spec": {
+                "ref": "docs/cards/starry-cards/03-hexagram-cards.md",
+                "quote": "點牌卡全畫面放大，再點關閉"
+              },
+              "risk": "low",
+              "riskReason": "AI 已在電腦與手機尺寸實際點過",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "無視窗 Chrome：電腦 1280×800 與手機 375×740 點變卦牌卡→放大層出現且鏡向、不超出畫面；點一下關閉；本卦放大不鏡向；Esc 也可關閉"
+                }
+              },
+              "manualOnly": false,
+              "manualOnlyReason": "",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/03-hexagram-cards/quiet-and-random",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n按「退回上一步」退到第一擲，改成六次都點 **2正面**；之後再隨意擲幾卦。\n\n預期：\n- 退回時牌卡跟著結果區收起\n- 六次 2正面：只有一張「第一卦 乾為天」牌卡，置中\n- 隨意擲的幾卦：卡上的卦名都和結果區的卦名一致\n- 按「再起一卦」後牌卡清除",
+              "spec": {
+                "ref": "docs/cards/starry-cards/03-hexagram-cards.md",
+                "quote": "沒有動爻時只顯示本卦一張，置中"
+              },
+              "risk": "low",
+              "riskReason": "AI 已實際操作並隨機擲 300 次比對",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "乾卦只有 card-01 一張、置中（偏差 0px）；隨機擲 300 次本卦／變卦牌卡全部對應正確；64 張圖都讀得到；退回上一步、再起一卦都會收起結果區；無錯誤、無左右捲動"
+                }
+              },
+              "manualOnly": false,
+              "manualOnlyReason": "",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/03-hexagram-cards/phone",
+              "text": "（推上網站後）用自己的手機打開網站擲一卦。\n\n預期：\n- 兩張牌卡並排不會擠出畫面\n- 點牌卡放大、再點關閉都順手",
+              "spec": {
+                "ref": "docs/cards/starry-cards/03-hexagram-cards.md",
+                "quote": "手機尺寸下兩張牌卡並排不擠出畫面，點擊放大正常"
+              },
+              "risk": "medium",
+              "riskReason": "AI 只能模擬手機寬度，實機手感要本人確認",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "僅模擬：無視窗 Chrome 375×740 兩張牌卡並排寬 309px、無左右捲動、放大 343×514（非實機）"
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "實機手感只能在自己手機上確認",
+              "crossEnv": true
+            }
+          ]
         }
       ]
     }

@@ -612,6 +612,13 @@ select.input option { background: var(--night-2); color: var(--text); }
 
 .insight-count.is-full { color: var(--moving); }
 
+/* 下載紀念圖 */
+.btn-keep {
+  display: block;
+  margin: -6px auto 22px;
+  padding: 8px 22px;
+}
+
 /* 牌卡放大檢視：點一下關閉 */
 .card-zoom {
   position: fixed;

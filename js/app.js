@@ -257,6 +257,44 @@
     renderNote();
   }
 
+  // 下載紀念圖：按下顯示「製作中…」，完成「✓ 已下載」，失敗「下載失敗，請再試一次」
+  var keepBtn = document.getElementById('download-keepsake');
+  var KEEP_LABEL = '⬇ 下載紀念圖';
+  var keepTimer = 0;
+
+  keepBtn.addEventListener('click', function () {
+    if (throws.length !== 6) return;
+    var result = cast(throws);
+    var day = timeInput.value.slice(0, 10);   // 起卦日期 2026-10-09
+    var name = result.primary.name + (result.changed ? '之' + result.changed.name : '');
+    clearTimeout(keepTimer);
+    keepBtn.disabled = true;
+    keepBtn.textContent = '製作中…';
+    makeKeepsake({
+      primary: result.primary,
+      changed: result.changed,
+      insight: insightInput.value,
+      date: day.replace(/-/g, '.')
+    }).then(function (blob) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = '龜卜卜_' + name + '_' + day.replace(/-/g, '') + '.jpg';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 60000);
+      keepBtn.textContent = '✓ 已下載';
+    }, function () {
+      // 直接雙擊開檔（file://）時瀏覽器禁止合成下載，要用網址開啟
+      keepBtn.textContent = location.protocol === 'file:'
+        ? '直接開檔無法下載，請用網站網址開啟'
+        : '下載失敗，請再試一次';
+    }).then(function () {
+      keepBtn.disabled = false;
+      keepTimer = setTimeout(function () { keepBtn.textContent = KEEP_LABEL; }, location.protocol === 'file:' ? 6000 : 3000);
+    });
+  });
+
   // 複製區
   var copyBtn = document.getElementById('copy-note');
   var copyFail = document.getElementById('copy-fail');

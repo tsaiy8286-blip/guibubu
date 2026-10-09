@@ -634,6 +634,81 @@ window.VERIFY_DATA = {
               "crossEnv": true
             }
           ]
+        },
+        {
+          "id": "04-insight",
+          "title": "04 我的啟發",
+          "items": [
+            {
+              "id": "starry-cards/04-insight/type-and-copy",
+              "text": "打開網站擲完一卦，在牌卡下方「我的啟發」**用注音輸入法**打一段話，例如「腳步被卡住，先停下來看清楚」。接著按「複製到 Obsidian」，貼到記事本。\n\n預期：\n- 打字時右下角字數即時變化\n- 繼續打到 60 字：數字變紅，再也打不進去\n- 貼上的筆記裡，「## 我的解讀」底下就是剛寫的那段話\n- 框的大小、字的顏色看起來順眼",
+              "spec": {
+                "ref": "docs/cards/starry-cards/04-insight.md",
+                "quote": "按「複製到 Obsidian」，筆記「## 我的解讀」底下自動填入這段文字"
+              },
+              "risk": "high",
+              "riskReason": "注音選字與真實剪貼簿 AI 模擬不到",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "AI 用模擬鍵盤輸入（未經注音選字）驗過字數、60 字上限與筆記預覽內容；真實注音輸入與貼上結果未驗"
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "注音選字與實際貼上的結果要本人操作",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/04-insight/reload-and-clear",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n寫一半按重新整理（F5），再按「再起一卦」。\n\n預期：\n- 重新整理後：起卦資訊、已擲的爻、我的啟發都還在\n- 按「再起一卦」後：我的啟發清空，字數回到 0 / 60\n- 沒寫啟發時，複製的筆記「## 我的解讀」底下留白",
+              "spec": {
+                "ref": "docs/cards/starry-cards/04-insight.md",
+                "quote": "寫一半重新整理網頁，文字還在；按「再起一卦」清除"
+              },
+              "risk": "low",
+              "riskReason": "AI 已在手機與電腦尺寸實際操作",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "無視窗 Chrome 兩種寬度：重新整理後 6 爻、問事、60 字啟發都在；清空啟發後筆記該段留白；再起一卦後啟發清空、字數 0 / 60、暫存刪除；node test.js 通過"
+                }
+              },
+              "manualOnly": false,
+              "manualOnlyReason": "",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/04-insight/phone",
+              "text": "（推上網站後）用自己的手機擲一卦，點「我的啟發」打幾個字。\n\n預期：\n- 鍵盤跳出來時看得到正在打的字，框沒有被鍵盤擋住\n- 打多了框會長高，不用在小框裡捲動",
+              "spec": {
+                "ref": "docs/cards/starry-cards/04-insight.md",
+                "quote": "手機尺寸下填寫框好打字、不被鍵盤擋住"
+              },
+              "risk": "medium",
+              "riskReason": "手機鍵盤只能在實機上看",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "僅模擬：375×740 寬度下框字級 16px、60 字時框長高為 4 行無捲軸、無左右捲動（非實機、沒有鍵盤）"
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "手機鍵盤行為只能在自己手機上確認",
+              "crossEnv": true
+            }
+          ]
         }
       ]
     }

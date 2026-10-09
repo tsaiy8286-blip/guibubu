@@ -12,13 +12,17 @@
 <body>
   <div class="page">
     <header class="site-header">
-      <h1 class="site-title">龜卜卜線上求卦</h1>
-      <span class="seal" aria-hidden="true">易</span>
+      <div class="brand">
+        <h1 class="site-title">龜卜卜線上求卦</h1>
+        <span class="seal" aria-hidden="true">易</span>
+      </div>
+      <p class="tagline">觀象・知時・自省</p>
+      <div class="header-rule" aria-hidden="true"></div>
     </header>
 
     <main class="site-main">
       <section class="panel cast-info" id="cast-info">
-        <h2 class="panel-title">起卦資訊</h2>
+        <h2 class="panel-title"><span class="step" aria-hidden="true">一</span>起卦資訊</h2>
 
         <div class="field">
           <label class="field-label" for="cast-time">時間</label>
@@ -64,7 +68,7 @@
       </section>
 
       <section class="panel throw-area" id="throw-area" hidden>
-        <h2 class="panel-title" id="throw-title">第 1 擲（初爻）</h2>
+        <h2 class="panel-title"><span class="step" aria-hidden="true">二</span><span id="throw-title">第 1 擲（初爻）</span></h2>
 
         <div class="throw-buttons" id="throw-buttons">
           <button class="throw-btn" type="button" data-backs="0">3正面<span class="coins" aria-hidden="true"></span></button>
@@ -88,7 +92,7 @@
 
       <div id="result-area" hidden>
         <section class="panel result">
-          <h2 class="panel-title">卦象結果</h2>
+          <h2 class="panel-title"><span class="step" aria-hidden="true">三</span>卦象</h2>
 
           <div class="result-figures" id="result-figures">
             <div class="figure-col">
@@ -119,6 +123,7 @@
         </section>
 
         <section class="panel copy-area">
+          <h2 class="panel-title"><span class="step" aria-hidden="true">四</span>保存</h2>
           <button class="btn btn-primary btn-block" type="button" id="copy-note">複製到 Obsidian</button>
           <button class="btn btn-block" type="button" id="copy-prompt">複製 AI 解卦提示詞</button>
           <p class="copy-fail" id="copy-fail" hidden>無法自動複製，請展開下方預覽，長按選取文字複製</p>

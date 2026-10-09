@@ -438,6 +438,104 @@ window.VERIFY_DATA = {
               "crossEnv": true
             }
           ]
+        },
+        {
+          "id": "02-starry-sky",
+          "title": "02 流金星空背景",
+          "items": [
+            {
+              "id": "starry-cards/02-starry-sky/look",
+              "text": "雙擊 `D:\\Projects\\龜卜卜(程式碼)\\index.html`，放著看一分鐘。\n\n預期：\n- 背景是流金星空：星星輕輕閃爍、金色微塵慢慢往上飄、北斗七星金線描出又淡去（電腦在左側，手機在畫面下方）\n- 一分鐘內至少看到一道金色流星\n- 好看、有「看星象」的感覺，但不會讓你分心、讀字不受影響",
+              "spec": {
+                "ref": "SPEC.md 全站共通",
+                "quote": "會動的「流金星空」，像在看星象"
+              },
+              "risk": "high",
+              "riskReason": "動態效果好不好看、會不會干擾閱讀只有你能判斷",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": ""
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "美感與是否分心是主觀感受",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/02-starry-sky/motion",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開網站後往下捲動頁面、擲一卦。\n\n預期：\n- 星空固定在背景不跟著捲，內容正常捲動\n- 所有按鈕照常可以點（星空沒有擋住）",
+              "spec": {
+                "ref": "docs/cards/starry-cards/02-starry-sky.md",
+                "quote": "捲動頁面：星空固定在背景，內容正常捲動、字看得清楚"
+              },
+              "risk": "low",
+              "riskReason": "AI 已在手機與電腦尺寸實際量測與操作",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "無視窗 Chrome＋遠端除錯協定：手機 390×844 跑 70 秒每秒約 59 格、畫面持續變化、3 道流星（第一道第 13 秒）；電腦 1280×800 每秒 60 格；星空 position fixed；兩種尺寸完整擲蹇之恆，按鈕點得到、無左右捲動、console 無錯誤"
+                }
+              },
+              "manualOnly": false,
+              "manualOnlyReason": "",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/02-starry-sky/reduced-motion",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n（選做）Windows：設定 → 協助工具 → 視覺效果 → 關閉「動畫效果」，重新整理網站。\n\n預期：\n- 星空完全不動，但星星、銀河、北斗七星都還在\n- 看完記得把「動畫效果」打開回來",
+              "spec": {
+                "ref": "SPEC.md 全站共通",
+                "quote": "設定「減少動態效果」時，只顯示靜止的星空"
+              },
+              "risk": "low",
+              "riskReason": "AI 已用模擬設定驗過",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "模擬「減少動態效果」載入頁面：間隔 2.5 秒兩次畫面完全相同，且有金色星點與北斗"
+                }
+              },
+              "manualOnly": false,
+              "manualOnlyReason": "",
+              "crossEnv": false
+            },
+            {
+              "id": "starry-cards/02-starry-sky/phone",
+              "text": "用自己的手機打開網站（推上網站後），滑動、點按、擲一卦。\n\n預期：\n- 滑動和點按不卡、不延遲\n- 星空在手機上也好看，頁首文字沒有被星星干擾\n- 用一陣子手機不會明顯發燙或耗電",
+              "spec": {
+                "ref": "docs/cards/starry-cards/02-starry-sky.md",
+                "quote": "手機上滑動、點按不卡頓"
+              },
+              "risk": "medium",
+              "riskReason": "動畫在不同手機上的順暢度不一樣，AI 只在電腦模擬過",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "僅模擬：電腦上的無視窗 Chrome 以手機尺寸量測每秒約 59 格（非實機）"
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "實機順暢度與耗電只能在自己手機上確認",
+              "crossEnv": true
+            }
+          ]
         }
       ]
     }

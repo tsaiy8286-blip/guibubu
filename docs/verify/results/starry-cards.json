@@ -2,7 +2,7 @@
   "project": "龜卜卜六爻小幫手",
   "changeId": "starry-cards",
   "changeName": "星夜改版＋卦象牌卡",
-  "exportedAt": "2026-10-09T15:11:02.510Z",
+  "exportedAt": "2026-10-09T15:38:57.040Z",
   "environments": [
     {
       "id": "desktop",
@@ -14,10 +14,10 @@
     }
   ],
   "summary": {
-    "total": 4,
-    "pass": 4,
+    "total": 8,
+    "pass": 5,
     "fail": 0,
-    "skip": 0,
+    "skip": 3,
     "untested": 0
   },
   "verdict": {
@@ -38,6 +38,26 @@
     },
     "starry-cards/01-starry-look/phone": {
       "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "starry-cards/02-starry-sky/look": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "starry-cards/02-starry-sky/motion": {
+      "status": "skip",
+      "note": "",
+      "envs": {}
+    },
+    "starry-cards/02-starry-sky/reduced-motion": {
+      "status": "skip",
+      "note": "",
+      "envs": {}
+    },
+    "starry-cards/02-starry-sky/phone": {
+      "status": "skip",
       "note": "",
       "envs": {}
     }

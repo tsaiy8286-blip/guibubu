@@ -270,11 +270,37 @@
   var copyPromptBtn = document.getElementById('copy-prompt');
   var copiedPrompt = null;
 
+  // 我的啟發：最多 60 字，會帶進 Obsidian 筆記的「## 我的解讀」
+  var INSIGHT_MAX = 60;
+  var insightInput = document.getElementById('insight');
+  var insightCount = document.getElementById('insight-count');
+
+  function updateInsightCount() {
+    var n = insightInput.value.length;
+    insightCount.textContent = n + ' / ' + INSIGHT_MAX;
+    insightCount.classList.toggle('is-full', n >= INSIGHT_MAX);
+  }
+
+  insightInput.addEventListener('input', function (e) {
+    // 注音選字時先不截，選完字再截（有些瀏覽器選字會超過上限）
+    if (!e.isComposing && insightInput.value.length > INSIGHT_MAX) {
+      insightInput.value = insightInput.value.slice(0, INSIGHT_MAX);
+    }
+    updateInsightCount();
+    if (throws.length === 6) renderNote();
+    saveState();
+  });
+  insightInput.addEventListener('compositionend', function () {
+    if (insightInput.value.length > INSIGHT_MAX) insightInput.value = insightInput.value.slice(0, INSIGHT_MAX);
+    updateInsightCount();
+  });
+
   function currentInfo() {
     return {
       date: timeInput.value,
       category: categorySelect.value,
-      question: questionInput.value.trim()
+      question: questionInput.value.trim(),
+      insight: insightInput.value.trim()
     };
   }
 
@@ -349,6 +375,8 @@
     timeInput.value = '';
     categorySelect.value = '';
     questionInput.value = '';
+    insightInput.value = '';
+    updateInsightCount();
     throws = [];
     copiedNote = null;
     copiedPrompt = null;
@@ -369,7 +397,7 @@
   function saveState() {
     if (!ready) return;
     var started = startBtn.textContent === '完成修改';
-    var empty = !timeInput.value && !categorySelect.value && !questionInput.value && throws.length === 0;
+    var empty = !timeInput.value && !categorySelect.value && !questionInput.value && !insightInput.value && throws.length === 0;
     try {
       if (empty) {
         localStorage.removeItem(STORAGE_KEY);
@@ -382,6 +410,7 @@
         started: started,
         editing: started && !castInfo.hidden,
         throws: throws,
+        insight: insightInput.value,
         copiedNote: copiedNote,
         copiedPrompt: copiedPrompt
       }));
@@ -407,6 +436,8 @@
         return b === 0 || b === 1 || b === 2 || b === 3;
       }).slice(0, 6);
     }
+    insightInput.value = typeof s.insight === 'string' ? s.insight.slice(0, INSIGHT_MAX) : '';
+    updateInsightCount();
     copiedNote = s.copiedNote || null;
     copiedPrompt = s.copiedPrompt || null;
     if (s.started && isFilled()) {

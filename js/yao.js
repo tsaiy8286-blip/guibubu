@@ -116,6 +116,9 @@ function toMarkdown(info, result) {
   out.push('');
   out.push('## 我的解讀');
   out.push('');
+  // 有填「我的啟發」就帶進來，沒填留白
+  var insight = (info.insight || '').trim();
+  if (insight) out.push(insight);
   out.push('');
   out.push('## 實際結果');
   out.push('');

@@ -591,6 +591,27 @@ select.input option { background: var(--night-2); color: var(--text); }
   font-size: 0.75rem;
 }
 
+/* 我的啟發 */
+.insight { margin-bottom: 20px; }
+
+/* 至少 3 行高；手機一行字少，打滿 60 字時框跟著長高，不出現捲軸 */
+.insight .input {
+  font-size: 1rem;
+  line-height: 1.7;
+  resize: none;
+  field-sizing: content;
+  min-height: calc(1.7em * 3 + 18px);
+}
+
+.insight-count {
+  margin: 4px 0 0;
+  text-align: right;
+  color: var(--text-soft);
+  font-size: 0.75rem;
+}
+
+.insight-count.is-full { color: var(--moving); }
+
 /* 牌卡放大檢視：點一下關閉 */
 .card-zoom {
   position: fixed;

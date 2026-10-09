@@ -52,5 +52,8 @@ assert(md.indexOf('本卦: 天水訟') > 0);
 assert(md.indexOf('變卦: 火地晉') > 0);
 assert(md.indexOf('動爻: [二爻, 五爻]') > 0);
 assert(md.indexOf('擲出: [2, 3, 2, 1, 3, 1]') > 0);
+assert(md.indexOf('## 我的解讀\n\n\n## 實際結果') > 0);
+var md2 = yao.toMarkdown({ date: '2026-10-04T14:30', category: '工作事業', question: '問', insight: '  先穩住再前進  ' }, yao.cast([2, 3, 2, 1, 3, 1]));
+assert(md2.indexOf('## 我的解讀\n\n先穩住再前進\n\n## 實際結果') > 0);
 
 console.log('全部通過');

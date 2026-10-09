@@ -108,6 +108,19 @@
             </div>
           </div>
 
+          <div class="hex-cards" id="hex-cards">
+            <figure class="hex-card-col">
+              <button class="hex-card" type="button" id="card-primary"><img alt=""></button>
+              <figcaption>本卦</figcaption>
+            </figure>
+            <span class="hex-arrow" id="card-arrow" aria-hidden="true">→</span>
+            <figure class="hex-card-col" id="card-changed-col">
+              <button class="hex-card is-mirror" type="button" id="card-changed"><img alt=""><img class="hex-flip" alt=""></button>
+              <figcaption>變卦</figcaption>
+            </figure>
+          </div>
+          <p class="hex-hint">點牌卡可放大</p>
+
           <p class="result-zhande" id="result-zhande"></p>
           <p class="result-quiet" id="result-quiet">六爻安靜，無變卦</p>
 
@@ -139,6 +152,10 @@
         </section>
       </div>
     </main>
+  </div>
+
+  <div class="card-zoom" id="card-zoom" role="dialog" aria-modal="true" aria-label="牌卡放大檢視" hidden>
+    <button class="hex-card" type="button" id="card-zoom-card" aria-label="關閉放大檢視"><img alt=""><img class="hex-flip" alt=""></button>
   </div>
 
   <script src="js/data.js"></script>

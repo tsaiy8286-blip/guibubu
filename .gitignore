@@ -19,3 +19,7 @@ desktop.ini
 
 # 工作日誌（私人，不上傳）
 Project_Log_*.md
+
+# 卦圖素材（AI 原圖、定裝照、工具、廢棄稿；約 560MB，不上傳）
+# 要放上網站的牌卡另存壓縮版到 images/hexagrams/
+素材/

@@ -918,6 +918,123 @@ window.VERIFY_DATA = {
               "crossEnv": true
             }
           ]
+        },
+        {
+          "id": "02-index-grid",
+          "title": "02-首頁六十四卦區與卦名連結",
+          "items": [
+            {
+              "id": "gua-book/02-index-grid/look",
+              "text": "打開專案資料夾 `龜卜卜(程式碼)`，雙擊 **index.html**，一路捲到最下面。\n\n接著隨便起一卦（擲完六次），看「三 卦象」框裡「本卦：第○卦　○○○」那行。\n\n預期：\n- 最下面有「六十四卦」框，下面一行小字「點卦名看原文與解說」，8 格一排共 8 排，每格上面小卦畫、下面卦名\n- 看起來舒服：小卦畫大小、卦名字級；**兩個字的卦名（小畜、噬嗑、既濟……）字比較小**，看順不順眼\n- 本卦、變卦那行的「第○卦　○○○」下面有一條金色細底線，看得出來可以點",
+              "spec": {
+                "ref": "docs/cards/gua-book/02-index-grid.md",
+                "quote": "首頁最下方多一個「六十四卦」區塊：8×8 格，每格小卦畫＋單字卦名"
+              },
+              "risk": "high",
+              "riskReason": "外觀好不好看只能人眼判斷",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "AI 截圖看過排版，但好不好看要本人判斷"
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "美感與兩字卦名縮小後的觀感只能本人判斷",
+              "crossEnv": false
+            },
+            {
+              "id": "gua-book/02-index-grid/grid-click",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n接著上一項，在首頁最下面的「六十四卦」：\n\n1. 從第一排看到最後一排，確認順序\n2. 點「**賁**」（第三排第六格）\n3. 按瀏覽器的「上一頁」\n\n預期：\n1. 順序是乾、坤、屯、蒙……最後是既濟、未濟；抽看幾格卦畫和卦名對得上（例如乾是六條實線、坤是六條斷線）\n2. 同一個分頁換成「第22卦　山火賁」的卦典頁\n3. 回到首頁",
+              "spec": {
+                "ref": "docs/cards/gua-book/02-index-grid.md",
+                "quote": "文王卦序；每格卦畫和卦名對得上；點「賁」前往 gua.html#22；按上一頁回到首頁"
+              },
+              "risk": "medium",
+              "riskReason": "跨頁連結與 64 格資料",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "Chrome 實測：64 格卦名逐格和文王卦序比對全部相同；抽查乾、坤、賁、明夷、既濟卦畫正確；滑鼠點賁→同分頁到 gua.html#22「第22卦　山火賁」；上一頁→回首頁、64 格都在"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false
+            },
+            {
+              "id": "gua-book/02-index-grid/result-links",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n在首頁起一卦（要有動爻，才會有變卦），擲完六次後到「三 卦象」框：\n\n1. 點「本卦：」後面那段有底線的「第○卦　○○○」\n2. 回到原本的分頁，點「變卦：」後面那段\n\n預期：\n1. 瀏覽器**多開一個新分頁**，顯示本卦的卦典頁\n2. 又多開一個新分頁，顯示變卦的卦典頁\n- 回到原本的分頁，剛剛擲的卦都還在，沒有被清掉",
+              "spec": {
+                "ref": "docs/cards/gua-book/02-index-grid.md",
+                "quote": "擲出一卦後點結果區本卦、變卦的卦名行：在新分頁打開正確的卦典頁，原分頁的卦還在"
+              },
+              "risk": "medium",
+              "riskReason": "新分頁開啟、不能弄丟正在起的卦",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "Chrome 實測擲出困之節：點變卦→新分頁 gua.html#60 水澤節；點本卦→新分頁 gua.html#47 澤水困；原分頁仍顯示「占得：困　之　節」；console 無錯誤"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false
+            },
+            {
+              "id": "gua-book/02-index-grid/wu-not-wu",
+              "text": "接著在首頁最下面的「六十四卦」看第四排第一格，再點它。\n\n預期：\n- 格子寫「**無妄**」（不是「无妄」）\n- 點進去的卦典頁標頭是「第25卦　天雷無妄」，原文是「無妄：元亨利貞。……」\n- 隨便點幾卦有「無咎」的（例如 師、隨、恆），原文都寫「無」\n- 牌卡圖上的字不變（圖不能改）",
+              "spec": {
+                "ref": "docs/SPEC.md",
+                "quote": "用字與首頁卦辭一致，一律用繁體正字（例如古本的「无」寫成「無」）"
+              },
+              "risk": "medium",
+              "riskReason": "這次驗收中途追加的改動，AI 沒在瀏覽器打開看過",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "只用程式檢查（node test.js：資料裡已沒有「无」、第25卦名稱是「無妄」），沒有在瀏覽器打開看"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false
+            },
+            {
+              "id": "gua-book/02-index-grid/phone-width",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n用手機寬度看首頁最下面的「六十四卦」（電腦上可把瀏覽器視窗拉到最窄）。\n\n預期：\n- 每排還是 8 格，不會掉到下一排\n- 不需要左右捲動\n- 兩個字的卦名沒有擠出格子\n\n（自己手機實機看「好不好點」要等推上網站後）",
+              "spec": {
+                "ref": "docs/cards/gua-book/02-index-grid.md",
+                "quote": "手機寬度：8 欄都放得下、字好點、不需左右捲動"
+              },
+              "risk": "low",
+              "riskReason": "AI 已量過 375、320 寬",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "把首頁放進 375px、320px 寬的框量：每排 8 格同一行、沒有元素超出右邊、兩字卦名都在格子內；截圖看過兩種寬度（320 寬時每格約 30px）"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": true
+            }
+          ]
         }
       ]
     }

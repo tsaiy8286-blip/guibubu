@@ -1211,9 +1211,10 @@ window.VERIFY_DATA = {
     {
       "id": "beginner-guide",
       "name": "新手說明",
-      "status": "verifying",
+      "status": "closed",
+      "closedAt": "2026-10-10",
       "specRef": "docs/SPEC.md",
-      "allTicketsLoaded": false,
+      "allTicketsLoaded": true,
       "tickets": [
         {
           "id": "01-guide-box",
@@ -1308,6 +1309,102 @@ window.VERIFY_DATA = {
               "risk": "medium",
               "riskReason": "AI 只量過窄框，沒在真手機上按過",
               "manualOnlyReason": "要在你自己的手機上看"
+            }
+          ]
+        },
+        {
+          "id": "02-ai-button-first",
+          "title": "02-AI 提示詞改主按鈕",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "AI 已截圖確認標題與順序正確；好不好看要你判斷"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "beginner-guide/02-ai-button-first/look",
+              "text": "在首頁起一卦（填時間、類別、問事 → 開始擲卦 → 擲完六次），捲到最下面的第四區。\n\n預期：\n- 標題是「四　解卦與保存」\n- 第一顆是**朱紅色**「複製 AI 解卦提示詞」，下面是**金框**「複製到 Obsidian」，再來「預覽筆記內容」、「再起一卦」\n- 看看朱紅＋金框這樣搭配順不順眼、標題念起來順不順\n\n（畫面沒變的話先按 Ctrl＋Shift＋R）",
+              "spec": {
+                "ref": "docs/cards/beginner-guide/02-ai-button-first.md",
+                "quote": "區塊標題「四　解卦與保存」；由上到下是「複製 AI 解卦提示詞」（朱紅）→「複製到 Obsidian」（金框）→「預覽筆記內容」→「再起一卦」"
+              },
+              "risk": "medium",
+              "riskReason": "樣子與用字只有你能判斷",
+              "manualOnlyReason": "好不好看、順不順口要你決定"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "滑鼠點兩顆按鈕 → 都變「✓ 已複製」；記錄寫進剪貼簿的文字：提示詞結尾填好（工作）測試問事、第47卦澤水困、初爻四爻、第60卦水澤節；筆記和預覽完全相同。複製程式沒改過。沒有實際貼到記事本（AI 讀剪貼簿會被瀏覽器擋）"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "beginner-guide/02-ai-button-first/paste",
+              "text": "接著上一項：\n1. 按「複製 AI 解卦提示詞」，打開記事本貼上\n2. 回網頁按「複製到 Obsidian」，在記事本另起一行貼上\n\n預期：\n- 兩顆按鈕按完都變「✓ 已複製」\n- 提示詞最後「我的問卦資料」填好問事、本卦、動爻、變卦，和以前一樣\n- 筆記內容和以前一樣（和「預覽筆記內容」展開的一樣）",
+              "spec": {
+                "ref": "docs/cards/beginner-guide/02-ai-button-first.md",
+                "quote": "按「複製 AI 解卦提示詞」貼到記事本：內容和以前一樣；按「複製到 Obsidian」貼到記事本：筆記內容和以前一樣；按鈕顯示「✓ 已複製」"
+              },
+              "risk": "medium",
+              "riskReason": "AI 沒能親手貼上，只記錄了寫入的內容"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "還沒複製筆記時點「再起一卦」→ 跳出「這一卦還沒複製，確定要清除嗎？」（測試時讓它自動回答取消，免得卡住瀏覽器）"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "beginner-guide/02-ai-button-first/new-cast-confirm",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n另起一卦擲完六次，**什麼都不複製**，直接按「再起一卦」。\n\n預期：\n- 跳出「這一卦還沒複製，確定要清除嗎？」\n- 按「取消」→ 這一卦還在",
+              "spec": {
+                "ref": "docs/cards/beginner-guide/02-ai-button-first.md",
+                "quote": "還沒複製過就按「再起一卦」：仍會先問「這一卦還沒複製，確定要清除嗎？」"
+              },
+              "risk": "low",
+              "riskReason": "AI 已點過，程式也沒改"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "在 375px 寬的小框載入網站：三顆按鈕都在畫面內、高 48px，頁面沒有左右捲動。沒有在真的手機上按"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": true,
+              "id": "beginner-guide/02-ai-button-first/phone",
+              "text": "（要先推上網站才能用手機看；也可以等之後一起看）用自己的手機起一卦，捲到第四區。\n\n預期：\n- 兩顆複製按鈕用手指好按\n- 不需要左右滑",
+              "spec": {
+                "ref": "docs/cards/beginner-guide/02-ai-button-first.md",
+                "quote": "手機寬度：兩顆按鈕好按、不需左右捲動"
+              },
+              "risk": "medium",
+              "riskReason": "AI 只量過窄框，沒在真手機上按過",
+              "manualOnlyReason": "要在你自己的手機上按"
             }
           ]
         }

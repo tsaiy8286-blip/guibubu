@@ -83,7 +83,7 @@
     grid.classList.toggle('is-picking', on);
     toggleBtn.textContent = on ? '取消選卦' : '✦ 自選卦做紀念圖';
     toggleBtn.setAttribute('aria-pressed', String(on));
-    hint.textContent = on ? '點卦名選卦：第一個是本卦，第二個是變卦（最多兩個）' : HINT;
+    hint.textContent = on ? '先點你的本卦；有紅字動爻的話，再點第二個卦當變卦。只有本卦也能做紀念圖。點已選的卦可取消。' : HINT;
     render();
   }
 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>卦典｜龜卜卜線上求卦</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="sky-vignette" aria-hidden="true"></div>
+  <div class="page">
+    <header class="site-header">
+      <div class="brand">
+        <h1 class="site-title"><a href="index.html">龜卜卜線上求卦</a></h1>
+        <span class="seal" aria-hidden="true">易</span>
+      </div>
+      <p class="tagline">觀象・知時・自省</p>
+      <div class="header-rule" aria-hidden="true"></div>
+    </header>
+
+    <main class="site-main">
+      <div class="gua-head">
+        <div class="gua-head-text">
+          <h2 class="gua-title" id="gua-title"></h2>
+          <p class="gua-trigrams" id="gua-trigrams"></p>
+        </div>
+        <ol class="figure" id="gua-figure" aria-hidden="true"></ol>
+      </div>
+
+      <figure class="gua-card">
+        <button class="hex-card" type="button" id="gua-card"><img alt=""></button>
+        <figcaption class="hex-hint">點牌卡可放大</figcaption>
+      </figure>
+
+      <blockquote class="card-words" id="card-words"></blockquote>
+
+      <section class="panel gua-section">
+        <h2 class="panel-title">原文</h2>
+        <blockquote class="gua-judgment" id="gua-judgment"></blockquote>
+      </section>
+
+      <section class="panel gua-section">
+        <h2 class="panel-title">解說</h2>
+        <p class="gua-pending">解說撰寫中</p>
+      </section>
+
+      <nav class="gua-nav" aria-label="換卦">
+        <a class="gua-nav-prev" id="gua-prev" href="#"></a>
+        <a class="btn btn-small gua-nav-home" href="index.html">回首頁</a>
+        <a class="gua-nav-next" id="gua-next" href="#"></a>
+      </nav>
+    </main>
+  </div>
+
+  <div class="card-zoom" id="card-zoom" role="dialog" aria-modal="true" aria-label="牌卡放大檢視" hidden>
+    <button class="hex-card" type="button" id="card-zoom-card" aria-label="關閉放大檢視"><img alt=""><img class="hex-flip" alt=""></button>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/yao.js"></script>
+  <script src="js/gua-text.js"></script>
+  <script src="js/hex-card.js"></script>
+  <script src="js/gua.js"></script>
+  <script src="js/sky.js"></script>
+</body>
+</html>

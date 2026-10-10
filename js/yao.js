@@ -49,6 +49,13 @@ function findHexagram(bits) {
   return null;
 }
 
+// 依卦序（1～64）取卦；卦序不對時回傳 null
+function hexagramByNumber(n) {
+  var h = HEXAGRAMS[n - 1];
+  if (!h) return null;
+  return findHexagram(TRIGRAMS[h[3]].lines.concat(TRIGRAMS[h[2]].lines));
+}
+
 // backsList：六次擲出的背數，由第一擲（初爻）到第六擲（上爻）
 function cast(backsList) {
   var lines = backsList.map(throwToLine);
@@ -126,5 +133,5 @@ function toMarkdown(info, result) {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = { POSITIONS: POSITIONS, throwLabel: throwLabel, throwToLine: throwToLine, findHexagram: findHexagram, cast: cast, toMarkdown: toMarkdown };
+  module.exports = { POSITIONS: POSITIONS, throwLabel: throwLabel, throwToLine: throwToLine, findHexagram: findHexagram, hexagramByNumber: hexagramByNumber, cast: cast, toMarkdown: toMarkdown };
 }

@@ -166,52 +166,14 @@
     return label + '：第' + g.number + '卦　' + g.fullName + '（上' + g.upper + '下' + g.lower + '）';
   }
 
-  // 卦象牌卡：images/hexagrams/card-01.jpg～card-64.jpg；變卦的翻轉由 CSS 處理
+  // 卦象牌卡（放大檢視見 js/hex-card.js）
   var cardPrimary = document.getElementById('card-primary');
   var cardChanged = document.getElementById('card-changed');
   var cardChangedCol = document.getElementById('card-changed-col');
   var cardArrow = document.getElementById('card-arrow');
-  var cardZoom = document.getElementById('card-zoom');
-  var cardZoomCard = document.getElementById('card-zoom-card');
-  var zoomFrom = null;   // 關閉放大後，焦點回到原本那張牌卡
 
-  function cardSrc(g) {
-    return 'images/hexagrams/card-' + (g.number < 10 ? '0' : '') + g.number + '.jpg';
-  }
-
-  function setCard(btn, g) {
-    var src = cardSrc(g);
-    Array.prototype.forEach.call(btn.querySelectorAll('img'), function (img) {
-      if (img.getAttribute('src') !== src) img.src = src;
-    });
-    btn.querySelector('img').alt = '第' + g.number + '卦　' + g.fullName + '牌卡';
-    btn.setAttribute('aria-label', '放大 第' + g.number + '卦　' + g.fullName + '牌卡');
-  }
-
-  function openZoom(btn) {
-    var src = btn.querySelector('img').getAttribute('src');
-    Array.prototype.forEach.call(cardZoomCard.querySelectorAll('img'), function (img) { img.src = src; });
-    cardZoomCard.querySelector('img').alt = btn.querySelector('img').alt;
-    cardZoomCard.classList.toggle('is-mirror', btn.classList.contains('is-mirror'));
-    cardZoom.hidden = false;
-    document.body.classList.add('zoom-open');
-    cardZoomCard.focus();
-    zoomFrom = btn;
-  }
-
-  function closeZoom() {
-    if (cardZoom.hidden) return;
-    cardZoom.hidden = true;
-    document.body.classList.remove('zoom-open');
-    if (zoomFrom) zoomFrom.focus();
-  }
-
-  cardPrimary.addEventListener('click', function () { openZoom(cardPrimary); });
-  cardChanged.addEventListener('click', function () { openZoom(cardChanged); });
-  cardZoom.addEventListener('click', closeZoom);
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeZoom();
-  });
+  HexCard.bind(cardPrimary);
+  HexCard.bind(cardChanged);
 
   function renderResult() {
     var result = cast(throws);
@@ -245,10 +207,10 @@
       document.getElementById('changed-judgment').textContent = result.changed.judgment;
     }
 
-    setCard(cardPrimary, result.primary);
+    HexCard.set(cardPrimary, result.primary);
     cardChangedCol.hidden = !hasChange;
     cardArrow.hidden = !hasChange;
-    if (hasChange) setCard(cardChanged, result.changed);
+    if (hasChange) HexCard.set(cardChanged, result.changed);
 
     var movingEl = document.getElementById('result-moving');
     movingEl.hidden = !hasChange;

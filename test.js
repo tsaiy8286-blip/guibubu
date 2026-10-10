@@ -56,4 +56,19 @@ assert(md.indexOf('## 我的解讀\n\n\n## 實際結果') > 0);
 var md2 = yao.toMarkdown({ date: '2026-10-04T14:30', category: '工作事業', question: '問', insight: '  先穩住再前進  ' }, yao.cast([2, 3, 2, 1, 3, 1]));
 assert(md2.indexOf('## 我的解讀\n\n先穩住再前進\n\n## 實際結果') > 0);
 
+// 依卦序取卦
+assert.strictEqual(yao.hexagramByNumber(22).fullName, '山火賁');
+assert.strictEqual(yao.hexagramByNumber(22).upper + yao.hexagramByNumber(22).lower, '艮離');
+assert.strictEqual(yao.hexagramByNumber(0), null);
+assert.strictEqual(yao.hexagramByNumber(65), null);
+
+// 牌卡的話：64 句都有，且和提示詞檔的「下方題字」逐字相同
+var fs = require('fs');
+var guaText = require('./js/gua-text.js');
+var promptFile = fs.readFileSync('./docs/hexagram-images/64卦提示詞.md', 'utf8');
+var re = /下方題字（[^）]*）：「([^」]+)」/g, m, words = [];
+while ((m = re.exec(promptFile))) words.push(m[1]);
+assert.strictEqual(words.length, 64, '提示詞檔的下方題字不是 64 句');
+assert.deepStrictEqual(guaText.CARD_WORDS, words);
+
 console.log('全部通過');

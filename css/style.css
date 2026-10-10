@@ -739,3 +739,94 @@ body.zoom-open { overflow: hidden; }
   .site-title { font-size: 1.4rem; letter-spacing: 0.1em; }
   .tagline { letter-spacing: 0.35em; }
 }
+
+/* 卦典頁（gua.html） */
+.site-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gua-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.gua-title {
+  margin: 0;
+  color: var(--cinnabar-light);
+  font-size: 1.6rem;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 18px rgba(208, 80, 63, 0.35);
+}
+
+.gua-trigrams {
+  margin: 6px 0 0;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  letter-spacing: 0.3em;
+}
+
+.gua-head .figure { flex: none; }
+
+.gua-card {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.gua-card .hex-hint { margin-bottom: 0; }
+
+.card-words {
+  max-width: 360px;
+  margin: 14px auto 24px;
+  padding: 10px 8px;
+  border-top: 1px solid var(--gold-soft);
+  border-bottom: 1px solid var(--gold-soft);
+  color: var(--gold-bright);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.gua-section { margin-bottom: 20px; }
+
+.gua-pending {
+  margin: 0;
+  color: var(--text-soft);
+}
+
+.gua-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.gua-nav-prev,
+.gua-nav-next {
+  color: var(--gold);
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.gua-nav-next { text-align: right; }
+
+.gua-nav-prev:hover,
+.gua-nav-next:hover { color: var(--gold-bright); }
+
+.gua-nav-name {
+  display: block;
+  color: var(--text-soft);
+  font-size: 0.85rem;
+}
+
+.gua-nav-home { grid-column: 2; text-decoration: none; }
+.gua-nav-next { grid-column: 3; }
+
+@media (max-width: 380px) {
+  .gua-title { font-size: 1.3rem; letter-spacing: 0.04em; }
+  .gua-head .yao-lg { width: 50px; }
+}

@@ -1919,9 +1919,10 @@ window.VERIFY_DATA = {
     {
       "id": "origin-story",
       "name": "起源故事",
-      "status": "verifying",
+      "status": "closed",
+      "closedAt": "2026-10-10",
       "specRef": "docs/SPEC.md",
-      "allTicketsLoaded": false,
+      "allTicketsLoaded": true,
       "tickets": [
         {
           "id": "01-story-page",
@@ -2012,6 +2013,124 @@ window.VERIFY_DATA = {
               "spec": {
                 "ref": "docs/cards/origin-story/01-story-page.md",
                 "quote": "手機尺寸下看起來正常：字好讀、圖不超出畫面、不用左右滑"
+              },
+              "risk": "medium",
+              "riskReason": "AI 只量過窄框，沒在真手機上看",
+              "manualOnlyReason": "要在你自己的手機上看"
+            }
+          ]
+        },
+        {
+          "id": "02-home-encounter",
+          "title": "02-首頁相遇區",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "AI 已確認順序、文字逐字相符、圖與新手說明框同寬（528px）；好不好看判斷不了"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "origin-story/02-home-encounter/look",
+              "text": "用電腦打開首頁 `index.html`（建議先按 Ctrl＋Shift＋R 強制重新整理），看頁首金線下方。\n\n預期：\n- 女吏抱銅龜的橫圖，金框和下方區塊一樣寬，看起來和網站風格搭\n- 圖下四行開場白置中、字比內文小一點，顏色好讀\n- 再下面一行金色「閱讀完整故事 →」\n- 開場白讀起來順（文字是照定稿放的）",
+              "spec": {
+                "ref": "docs/cards/origin-story/02-home-encounter.md",
+                "quote": "首頁頁首下方、新手說明上方，依序有主形象圖、四行開場白、「閱讀完整故事 →」"
+              },
+              "risk": "medium",
+              "riskReason": "整體觀感只有你能判斷",
+              "manualOnlyReason": "好不好看、字大小合不合適要你親眼看"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "用程式把網頁上四行字和 SPEC 逐字比對 → 完全相同；相遇區找不到「觀象」；開場白 14.4px、內文 17px；置中"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "origin-story/02-home-encounter/text-order",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開首頁，看相遇區四行開場白。\n\n預期：\n- 依序是「昔日姜嫄感天履痕，文王仰觀星穹演易。」「夜空星軌運轉，掌卦女吏手抱溫潤銅龜，於星海下靜候每一位尋找解答的旅人。」「她是嚴謹的掌卦女官，或是穿越千年的神聖指引？」「請靜心起卦，聽天地萬物寄予你的解答。」\n- 相遇區沒有重複「觀象・知時・自省」",
+              "spec": {
+                "ref": "docs/cards/origin-story/02-home-encounter.md",
+                "quote": "開場白四行文字與 SPEC 一致，置中、字比內文小一點，沒有重複「觀象・知時・自省」"
+              },
+              "risk": "low",
+              "riskReason": "AI 已逐字比對"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "實際用滑鼠點圖 → 畫面無變化、沒有放大框；點連結 → story.html；點「靜心起卦 →」→ index.html#cast-info，起卦資訊停在頂端下方 16px"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "origin-story/02-home-encounter/links-click",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n在首頁點主形象圖一下；再點「閱讀完整故事 →」；到故事頁後捲到最下面按「靜心起卦 →」。\n\n預期：\n- 點圖沒有任何反應（不會放大）\n- 點連結 → 到故事頁「故事緣起」\n- 按「靜心起卦 →」→ 回首頁，停在「一 起卦資訊」，金框完整",
+              "spec": {
+                "ref": "docs/cards/origin-story/02-home-encounter.md",
+                "quote": "點「閱讀完整故事 →」到故事頁；在故事頁按「靜心起卦 →」回首頁起卦資訊；點主形象圖不會有反應"
+              },
+              "risk": "low",
+              "riskReason": "AI 已實際點過"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "點新手說明標題 → 展開；填資料 → 開始擲卦 → 擲六次 → 出現六擲完成、卦象（困之節）、解卦與保存；六十四卦 64 格；主控台沒有錯誤"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "origin-story/02-home-encounter/others",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n在首頁照常起一次卦：點開新手說明，填時間、類別、問事，按「開始擲卦」擲六次，再捲到六十四卦。\n\n預期：\n- 新手說明能展開收起\n- 擲完出現卦象、牌卡、卦辭、解卦與保存\n- 六十四卦 64 格都在",
+              "spec": {
+                "ref": "docs/cards/origin-story/02-home-encounter.md",
+                "quote": "新手說明、起卦、擲卦、結果、六十四卦照常能用"
+              },
+              "risk": "low",
+              "riskReason": "AI 已走過一次，這張卡沒改到這些功能的程式"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "375px 窄框：頁面寬 360px 無左右捲動；圖 328×185，臉和銅龜清楚；新手說明在畫面上半；原本「引？」單字落行已改成只在逗號後換行。網頁版圖片 1120×630、約 100KB，原檔仍只在素材。沒在真手機上看過"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": true,
+              "id": "origin-story/02-home-encounter/phone",
+              "text": "（要先推上網站才能用手機看；也可以等之後一起看）用自己的手機打開首頁。\n\n預期：\n- 圖不超出畫面，女吏的臉和銅龜看得清楚\n- 開場白只在逗號後換行，沒有單一個字掉到下一行\n- 往下滑一點就看到新手說明",
+              "spec": {
+                "ref": "docs/cards/origin-story/02-home-encounter.md",
+                "quote": "手機尺寸下看起來正常：圖不超出畫面、女吏的臉和銅龜清楚、往下滑就看得到新手說明"
               },
               "risk": "medium",
               "riskReason": "AI 只量過窄框，沒在真手機上看",

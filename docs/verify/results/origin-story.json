@@ -2,7 +2,7 @@
   "project": "龜卜卜六爻小幫手",
   "changeId": "origin-story",
   "changeName": "起源故事",
-  "exportedAt": "2026-10-10T05:45:14.006Z",
+  "exportedAt": "2026-10-10T06:03:52.376Z",
   "environments": [
     {
       "id": "desktop",
@@ -14,11 +14,11 @@
     }
   ],
   "summary": {
-    "total": 4,
-    "pass": 0,
+    "total": 9,
+    "pass": 1,
     "fail": 0,
-    "skip": 1,
-    "untested": 3
+    "skip": 2,
+    "untested": 6
   },
   "verdict": {
     "origin-story/01-story-page/look-and-read": {
@@ -27,6 +27,16 @@
       "envs": {}
     },
     "origin-story/01-story-page/phone": {
+      "status": "skip",
+      "note": "",
+      "envs": {}
+    },
+    "origin-story/02-home-encounter/look": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "origin-story/02-home-encounter/phone": {
       "status": "skip",
       "note": "",
       "envs": {}

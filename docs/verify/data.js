@@ -337,7 +337,8 @@ window.VERIFY_DATA = {
     {
       "id": "starry-cards",
       "name": "星夜改版＋卦象牌卡",
-      "status": "verifying",
+      "status": "closed",
+      "closedAt": "2026-10-10",
       "specRef": "docs/SPEC.md",
       "allTicketsLoaded": true,
       "tickets": [

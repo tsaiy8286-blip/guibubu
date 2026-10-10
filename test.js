@@ -89,6 +89,24 @@ assert.strictEqual(guaText.YAO_CI[1][6].slice(0, 3), '用六，');
 assert.strictEqual(guaText.YAO_CI[21][5], '上九，白賁，無咎。');
 assert.strictEqual(guaText.DA_XIANG[21], '山下有火，賁。君子以明庶政，無敢折獄。');
 
+// 解說：64 格（沒寫的是 null）；第1～8卦已寫好
+// 有解說的卦：一句話卦意以牌卡的話原句開頭、六爻白話條數和爻題跟爻辭一致、一句話提醒照句型、不說「一定會」「命中注定」
+assert.strictEqual(guaText.COMMENTARY.length, 64);
+for (var w = 0; w < 8; w++) assert.ok(guaText.COMMENTARY[w], '第' + (w + 1) + '卦應該有解說');
+guaText.COMMENTARY.forEach(function (c, i) {
+  if (!c) return;
+  var n = i + 1;
+  assert.strictEqual(c.meaning.indexOf('「' + guaText.CARD_WORDS[i] + '」'), 0, '第' + n + '卦的一句話卦意沒有以牌卡的話開頭');
+  ['yang', 'yin', 'flip', 'remind'].forEach(function (k) { assert.ok(c[k], '第' + n + '卦缺 ' + k); });
+  assert.strictEqual(c.yao.length, guaText.YAO_CI[i].length, '第' + n + '卦六爻白話條數不對');
+  c.yao.forEach(function (line, k) {
+    assert.strictEqual(line.slice(0, 3), guaText.YAO_CI[i][k].slice(0, 3), '第' + n + '卦第' + (k + 1) + '條爻題不對');
+  });
+  assert.ok(/^這一卦不是要.+，而是在提醒/.test(c.remind), '第' + n + '卦的一句話提醒不是「這一卦不是要＿＿，而是在提醒＿＿」句型');
+  var all = [c.meaning, c.yang, c.yin, c.flip, c.remind].concat(c.yao).join('');
+  ['一定會', '命中注定'].forEach(function (bad) { assert.ok(all.indexOf(bad) < 0, '第' + n + '卦出現「' + bad + '」'); });
+});
+
 // 經文用繁體正字：網站資料不得出現古本的「无」（一律寫「無」）
 ['./js/data.js', './js/gua-text.js'].forEach(function (f) {
   assert.ok(fs.readFileSync(f, 'utf8').indexOf('无') < 0, f + ' 裡還有「无」，請改成「無」');

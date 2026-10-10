@@ -26,9 +26,8 @@
     }
   }
 
-  // 爻辭：初爻排到上爻（乾坤的用九、用六在最後），爻題另外上色
-  function renderYao(lines) {
-    var list = document.getElementById('gua-yao');
+  // 爻辭與六爻白話：初爻排到上爻（乾坤的用九、用六在最後），爻題另外上色
+  function renderYao(list, lines) {
     list.innerHTML = '';
     lines.forEach(function (line) {
       var li = document.createElement('li');
@@ -39,6 +38,17 @@
       li.appendChild(document.createTextNode(line.slice(3)));
       list.appendChild(li);
     });
+  }
+
+  // 解說：還沒寫的卦只顯示「解說撰寫中」
+  function renderCommentary(c) {
+    document.getElementById('gua-pending').hidden = !!c;
+    document.getElementById('gua-commentary').hidden = !c;
+    if (!c) return;
+    ['meaning', 'yang', 'yin', 'flip', 'remind'].forEach(function (k) {
+      document.getElementById('c-' + k).textContent = c[k];
+    });
+    renderYao(document.getElementById('c-yao'), c.yao);
   }
 
   function setNav(link, n) {
@@ -61,7 +71,8 @@
     document.getElementById('card-words').textContent = '「' + CARD_WORDS[n - 1] + '」';
     document.getElementById('gua-judgment').textContent = g.judgment;
     document.getElementById('gua-xiang').textContent = DA_XIANG[n - 1];
-    renderYao(YAO_CI[n - 1]);
+    renderYao(document.getElementById('gua-yao'), YAO_CI[n - 1]);
+    renderCommentary(COMMENTARY[n - 1]);
     setNav(prev, n - 1);
     setNav(next, n + 1);
   }

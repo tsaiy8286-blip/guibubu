@@ -865,6 +865,32 @@ body.zoom-open { overflow: hidden; }
   color: var(--text-soft);
 }
 
+/* 解說：小標用古金色，段落之間留白；六爻白話不加上方分隔線 */
+.gua-sub {
+  margin: 18px 0 6px;
+  color: var(--gold);
+  font-size: 1rem;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+}
+
+.gua-commentary > .gua-sub:first-child { margin-top: 0; }
+
+.gua-commentary p { margin: 0; }
+
+.gua-meaning { color: var(--gold-bright); }
+
+.gua-yao-plain {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.gua-remind {
+  padding: 10px 12px;
+  border-left: 2px solid var(--gold-soft);
+}
+
 .gua-nav {
   display: grid;
   grid-template-columns: 1fr auto 1fr;

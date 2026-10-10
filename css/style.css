@@ -185,6 +185,47 @@ body {
   line-height: 1;
 }
 
+/* 新手說明框：點標題展開／收起 */
+.guide > summary {
+  cursor: pointer;
+  list-style: none;
+  margin-bottom: 0;
+  padding: 4px 0;
+}
+
+.guide > summary::-webkit-details-marker { display: none; }
+
+.guide[open] > summary { margin-bottom: 14px; }
+
+.guide-mark {
+  order: 2;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  transition: transform 0.2s ease;
+}
+
+.guide[open] .guide-mark { transform: rotate(180deg); }
+
+.guide-steps {
+  margin: 0;
+  padding-left: 1.4em;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.guide-steps li + li { margin-top: 12px; }
+
+.guide-steps li::marker { color: var(--gold); }
+
+.guide-steps p { margin: 0; }
+
+.guide-step-title {
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
 /* 表單欄位 */
 .field { margin-bottom: 16px; }
 

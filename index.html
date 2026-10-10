@@ -23,6 +23,24 @@
     </header>
 
     <main class="site-main">
+      <details class="panel guide" id="guide">
+        <summary class="panel-title">第一次來？三步驟就能解卦<span class="guide-mark" aria-hidden="true">▾</span></summary>
+        <ol class="guide-steps">
+          <li>
+            <p class="guide-step-title">準備三枚硬幣</p>
+            <p>一樣的硬幣三枚，乾隆通寶或一般十元硬幣都可以。心裡想著要問的事，填好上面的資料。</p>
+          </li>
+          <li>
+            <p class="guide-step-title">擲六次，每擲一次就按一次</p>
+            <p>三枚一起擲，數數看幾個正面，按對應的按鈕。第一次是最下面的初爻，依序往上，共六次。正反面怎麼分，擲卦區下方有說明。</p>
+          </li>
+          <li>
+            <p class="guide-step-title">複製提示詞，貼給你的 AI</p>
+            <p>六次擲完後按「複製 AI 解卦提示詞」，貼到你平常用的 AI（ChatGPT、Gemini、Claude 都可以），它就會幫你解卦。</p>
+          </li>
+        </ol>
+      </details>
+
       <section class="panel cast-info" id="cast-info">
         <h2 class="panel-title"><span class="step" aria-hidden="true">一</span>起卦資訊</h2>
 
@@ -194,6 +212,7 @@
     <button class="hex-card" type="button" id="card-zoom-card" aria-label="關閉放大檢視"><img alt=""><img class="hex-flip" alt=""></button>
   </div>
 
+  <script src="js/guide.js"></script>
   <script src="js/data.js"></script>
   <script src="js/yao.js"></script>
   <script src="js/prompt.js"></script>

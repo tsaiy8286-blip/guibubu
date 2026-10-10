@@ -162,8 +162,17 @@
     return li;
   }
 
-  function guaTitle(label, g) {
-    return label + '：第' + g.number + '卦　' + g.fullName + '（上' + g.upper + '下' + g.lower + '）';
+  // 「本卦：第6卦　天水訟（上乾下坎）」，其中「第6卦　天水訟」可點，新分頁打開卦典頁
+  function setGuaTitle(el, label, g) {
+    var a = document.createElement('a');
+    a.className = 'gua-link';
+    a.href = 'gua.html#' + g.number;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = '第' + g.number + '卦　' + g.fullName;
+    el.textContent = label + '：';
+    el.appendChild(a);
+    el.appendChild(document.createTextNode('（上' + g.upper + '下' + g.lower + '）'));
   }
 
   // 卦象牌卡（放大檢視見 js/hex-card.js）
@@ -198,12 +207,12 @@
       ? '占得：' + result.primary.name + '　之　' + result.changed.name
       : '占得：' + result.primary.name;
 
-    document.getElementById('primary-name').textContent = guaTitle('本卦', result.primary);
+    setGuaTitle(document.getElementById('primary-name'), '本卦', result.primary);
     document.getElementById('primary-judgment').textContent = result.primary.judgment;
     document.getElementById('changed-block').hidden = !hasChange;
     if (hasChange) {
       document.getElementById('figure-changed-name').textContent = result.changed.name;
-      document.getElementById('changed-name').textContent = guaTitle('變卦', result.changed);
+      setGuaTitle(document.getElementById('changed-name'), '變卦', result.changed);
       document.getElementById('changed-judgment').textContent = result.changed.judgment;
     }
 

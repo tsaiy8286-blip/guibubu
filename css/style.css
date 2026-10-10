@@ -830,3 +830,87 @@ body.zoom-open { overflow: hidden; }
   .gua-title { font-size: 1.3rem; letter-spacing: 0.04em; }
   .gua-head .yao-lg { width: 50px; }
 }
+
+/* 結果區卦名可點：新分頁打開卦典頁 */
+.gua-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--gold-soft);
+  text-underline-offset: 4px;
+}
+
+.gua-link:hover { color: var(--gold-bright); text-decoration-color: var(--gold); }
+
+/* 首頁最下方「六十四卦」：8 欄 × 8 列，手機上也是 8 欄 */
+.gua-index .panel-title { margin-bottom: 4px; }
+
+.gua-index-hint {
+  margin: 0 0 14px;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.gua-grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gua-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 0 4px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.gua-cell:hover { border-color: var(--gold-soft); background: rgba(214, 180, 106, 0.08); }
+.gua-cell:hover .gua-cell-name { color: var(--gold-bright); }
+.gua-cell:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 1px; }
+
+.mini-figure {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 20px;
+}
+
+.mini-yao {
+  display: flex;
+  justify-content: space-between;
+  height: 3px;
+}
+
+.mini-yao i {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+}
+
+.gua-cell-name {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* 兩個字的卦名（小畜、噬嗑、既濟……）縮小，才放得進窄格 */
+.gua-cell-name.is-long {
+  font-size: 0.9rem;
+  line-height: calc(1.05rem * 1.6);
+}
+
+@media (max-width: 440px) {
+  .gua-cell-name.is-long { font-size: 0.8rem; letter-spacing: -0.02em; }
+}
+
+@media (max-width: 380px) {
+  .gua-grid { gap: 2px; }
+  .gua-cell-name.is-long { font-size: 0.75rem; }
+}

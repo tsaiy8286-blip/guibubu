@@ -1205,6 +1205,125 @@ window.VERIFY_DATA = {
               "manualOnlyReason": "要在你自己的手機上按"
             }
           ]
+        },
+        {
+          "id": "05-commentary-1",
+          "title": "05-解說第1批（第1～8卦）",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "AI 通讀 8 卦，把偏陰森、帶貶意的說法改溫和（例如「在血泊中等」「小人不可重用」）；全文沒有「一定會」「命中注定」"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "gua-book/05-commentary-1/read-one",
+              "text": "用瀏覽器打開 `gua.html`（直接雙擊就好），網址最後改成 `#1` 看乾卦（或從首頁「六十四卦」點**乾**），往下捲到「解說」，挑**一兩卦**讀讀看（例如乾、訟）。\n\n預期：\n- 依序有：一句話卦意、陽面、陰面、吉中之凶／凶中之吉、六爻、一句話提醒\n- 讀起來有啟發、口氣溫和，不嚇人、不貶低人\n- 稱呼是「你」（開頭引用的牌卡的話保留「妳」）",
+              "spec": {
+                "ref": "docs/SPEC.md 卦典頁・解說",
+                "quote": "語氣照〈一陰一陽・問事覺察版〉提示詞：溫和、誠懇、清醒、不恐嚇、不神化、不說「一定會」。"
+              },
+              "risk": "high",
+              "riskReason": "你授權 AI 代為審稿，內容好不好只有你能決定",
+              "manualOnlyReason": "文字讀起來有沒有啟發、順不順，要你判斷"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "截圖看過第7卦（電腦寬度）、第2卦（手機寬度）排版，沒有重疊或被切掉"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "gua-book/05-commentary-1/look",
+              "text": "同上一項，看「解說」區塊的樣子。\n\n預期：\n- 小標（陽面、陰面⋯⋯）是金色，一句話卦意是比較亮的金色\n- 六爻每行前面有金色爻題（初九、九二⋯⋯）\n- 一句話提醒左邊有一條金線\n- 整體好不好看、好不好讀",
+              "spec": {
+                "ref": "docs/SPEC.md 卦典頁・解說",
+                "quote": "解說（區塊，標題「解說」）"
+              },
+              "risk": "medium",
+              "riskReason": "新做的版面，AI 看不出美醜",
+              "manualOnlyReason": "好不好看要你判斷"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "程式逐字比對 8 卦開頭和牌卡的話資料；再直接看 card-01～08.jpg 圖上的字，8 句都一致；全文逐字檢查沒有簡體字；node test.js 也會擋"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "gua-book/05-commentary-1/card-words-match",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開第1～8卦任一卦，對照上方牌卡下面那句話和「一句話卦意」的開頭。\n\n預期：\n- 一句話卦意開頭（「」裡的字）和牌卡上的句子一字不差",
+              "spec": {
+                "ref": "docs/cards/gua-book/05-commentary-1.md",
+                "quote": "一句話卦意：開頭一定引用牌卡的話原句"
+              },
+              "risk": "low",
+              "riskReason": "AI 已用程式和看圖兩種方式核對"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "Chrome 逐一換到第1～8、9、22、64卦：1～8 顯示解說（乾坤六爻 7 條，其他 6 條）、其他顯示「解說撰寫中」；console 沒有錯誤"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "gua-book/05-commentary-1/pending-and-nav",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n在卦典頁按底部「下一卦 ›」從第7卦換到第8卦，再換到第9卦。\n\n預期：\n- 第8卦有解說；第9卦的解說區塊只寫「解說撰寫中」，牌卡和原文照常顯示\n- 換卦時解說內容跟著換，不會留著上一卦的",
+              "spec": {
+                "ref": "docs/SPEC.md 卦典頁・解說",
+                "quote": "還沒寫好的卦顯示「解說撰寫中」，其他區塊照常顯示"
+              },
+              "risk": "low",
+              "riskReason": "AI 已逐卦換過"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "把頁面放進 375px、320px 寬的框量：解說區塊沒有超出右邊、不需左右捲動；沒有在真的手機上看"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": true,
+              "id": "gua-book/05-commentary-1/phone",
+              "text": "（要先推上網站才能用手機看）用自己的手機打開網站的卦典頁第1卦，往下捲到解說。\n\n預期：\n- 字不會太小、好讀\n- 不需要左右滑",
+              "spec": {
+                "ref": "CLAUDE.md 開發慣例",
+                "quote": "手機和電腦都要能正常瀏覽（響應式設計）"
+              },
+              "risk": "medium",
+              "riskReason": "AI 只模擬手機寬度",
+              "manualOnlyReason": "要用你自己的手機看"
+            }
+          ]
         }
       ]
     },

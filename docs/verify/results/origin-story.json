@@ -1,0 +1,37 @@
+{
+  "project": "龜卜卜六爻小幫手",
+  "changeId": "origin-story",
+  "changeName": "起源故事",
+  "exportedAt": "2026-10-10T05:45:14.006Z",
+  "environments": [
+    {
+      "id": "desktop",
+      "label": "電腦瀏覽器"
+    },
+    {
+      "id": "phone",
+      "label": "自己的手機"
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "pass": 0,
+    "fail": 0,
+    "skip": 1,
+    "untested": 3
+  },
+  "verdict": {
+    "origin-story/01-story-page/look-and-read": {
+      "status": "",
+      "note": "龜卜卜：星穹下的掌卦女吏，改成\"故事緣起\"",
+      "envs": {}
+    },
+    "origin-story/01-story-page/phone": {
+      "status": "skip",
+      "note": "",
+      "envs": {}
+    }
+  },
+  "ticketNotes": {},
+  "changeNote": ""
+}

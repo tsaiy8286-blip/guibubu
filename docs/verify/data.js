@@ -1915,6 +1915,111 @@ window.VERIFY_DATA = {
           ]
         }
       ]
+    },
+    {
+      "id": "origin-story",
+      "name": "起源故事",
+      "status": "verifying",
+      "specRef": "docs/SPEC.md",
+      "allTicketsLoaded": false,
+      "tickets": [
+        {
+          "id": "01-story-page",
+          "title": "01-故事頁",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": ""
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "origin-story/01-story-page/look-and-read",
+              "text": "用電腦打開專案資料夾裡的 `story.html`（直接雙擊），從頭讀到尾。\n\n預期：\n- 標題「故事緣起」和四段故事的金色、字距看起來舒服\n- 第三段的女吏全身照大小合適，不會太大或太小\n- 故事讀起來順，粗體強調的地方對（文字已照定稿放，AI 逐字比對過）",
+              "spec": {
+                "ref": "docs/cards/origin-story/01-story-page.md",
+                "quote": "標題與四段故事都在，文字與 SPEC「故事全文（定稿）」一致"
+              },
+              "risk": "high",
+              "riskReason": "新頁面的整體觀感 AI 判斷不了",
+              "manualOnlyReason": "好不好看、讀起來順不順只有你能判斷"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "在 Chrome 點第三段的定裝照 → 全畫面放大；再點一下 → 關閉。電腦寬與 375px 手機寬各試一次"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "origin-story/01-story-page/photo-zoom",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n在 `story.html` 捲到第三段「三、智慧女吏，神話懸念」，點女吏的照片。\n\n預期：\n- 照片在段落標題下面、內文上面，圖下有「點圖可放大」\n- 點了全畫面放大，再點一下關閉",
+              "spec": {
+                "ref": "docs/cards/origin-story/01-story-page.md",
+                "quote": "點定裝照會全畫面放大，再點一下關閉"
+              },
+              "risk": "low",
+              "riskReason": "AI 已實際點過，沿用牌卡的放大功能"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "點網站名稱 → 到 index.html；點「靜心起卦 →」→ 到 index.html#cast-info，「一 起卦資訊」停在畫面頂端下方 16px（原本貼頂、金框被切，已修）"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "origin-story/01-story-page/links",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n在 `story.html` 捲到最下面，按朱紅「靜心起卦 →」；再回故事頁，點最上面的「龜卜卜線上求卦」。\n\n預期：\n- 按「靜心起卦 →」→ 回到首頁，畫面停在「一 起卦資訊」，上緣金框完整\n- 點網站名稱 → 回到首頁最上面",
+              "spec": {
+                "ref": "docs/cards/origin-story/01-story-page.md",
+                "quote": "故事最後有朱紅「靜心起卦 →」按鈕，按了回首頁並停在「一 起卦資訊」"
+              },
+              "risk": "low",
+              "riskReason": "AI 已實際點過兩個連結"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "在 375px 寬的小框載入：頁面沒有左右捲動、照片 260px 在框內、內文 17px。沒在真手機上看過"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": true,
+              "id": "origin-story/01-story-page/phone",
+              "text": "（要先推上網站才能用手機看；也可以等之後一起看）用自己的手機打開故事頁。\n\n預期：\n- 字好讀，不需要左右滑\n- 照片不超出畫面，點了能放大、再點關閉",
+              "spec": {
+                "ref": "docs/cards/origin-story/01-story-page.md",
+                "quote": "手機尺寸下看起來正常：字好讀、圖不超出畫面、不用左右滑"
+              },
+              "risk": "medium",
+              "riskReason": "AI 只量過窄框，沒在真手機上看",
+              "manualOnlyReason": "要在你自己的手機上看"
+            }
+          ]
+        }
+      ]
     }
   ]
 };

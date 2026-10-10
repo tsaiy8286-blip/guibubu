@@ -1109,6 +1109,102 @@ window.VERIFY_DATA = {
               "riskReason": "AI 已打開檢查，且程式逐卦核對過 64 卦"
             }
           ]
+        },
+        {
+          "id": "04-custom-keepsake",
+          "title": "04-自選卦做紀念圖",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "Chrome 開 localhost 版選賁→明夷、填啟發後按下載，攔下下載連結把圖顯示出來截圖：觀象、賁之明夷、兩張牌卡（明夷鏡向）、啟發方框、2026.10.10 落款都在；只選賁也試過。沒有真的存成檔案"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "gua-book/04-custom-keepsake/download-look",
+              "text": "這項要用**網址**開（直接雙擊開檔不能下載）：在瀏覽器網址列輸入 **http://localhost:8765/index.html**（打不開的話跟我說，我幫你重開本機網址），捲到最下面「六十四卦」。\n\n1. 按「✦ 自選卦做紀念圖」，點**賁**、再點**明夷**\n2. 在「我的啟發」打一句話，按「⬇ 下載紀念圖」，打開下載的檔案\n3. 再點一下明夷取消，只剩賁，再下載一次\n\n預期：\n- 賁格子朱紅框、右上角朱紅小標「本」；明夷標「變」——**小標和框好不好看**\n- 預覽：賁＋金色箭頭＋明夷（明夷人物翻向左邊，和賁面對面）\n- 第一張圖：上方小字「觀　象」、金色「賁　之　明夷」、兩張牌卡、「我的啟發」方框、右下「今天日期　龜卜卜線上求卦」＋易印；檔名「龜卜卜_賁之明夷_今天日期.jpg」\n- 第二張圖：只有一張賁牌卡；檔名「龜卜卜_賁_今天日期.jpg」",
+              "spec": {
+                "ref": "docs/SPEC.md 六十四卦",
+                "quote": "紀念圖版面與結果區紀念圖相同，差別只有：上方小字寫「觀　象」（不是「占　得」，因為不是擲出來的）；日期是下載當天"
+              },
+              "risk": "high",
+              "riskReason": "好不好看、真的存得下來只有你能確認",
+              "manualOnlyReason": "外觀要你判斷；AI 沒有真的存檔"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "Chrome 實際點擊：按鈕變「取消選卦」；賁→明夷標本／變；再點賁 → 明夷遞補為本、預覽剩一張；選滿兩卦再點乾、比都選不上；取消選卦後選取、角標、預覽、啟發字都清空，點卦名又連到 gua.html#22；console 沒有錯誤"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "gua-book/04-custom-keepsake/pick-rules",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n在首頁「六十四卦」按「✦ 自選卦做紀念圖」，點賁、明夷，然後：\n1. 再點**賁** → 明夷變成「本」，預覽只剩一張明夷\n2. 再點賁、再點**乾** → 乾選不上（最多兩個）\n3. 按「取消選卦」\n\n預期：\n- 取消後框、小標、預覽都不見，啟發框清空；按鈕回到「✦ 自選卦做紀念圖」\n- 這時點任一卦名，會換到那一卦的卦典頁",
+              "spec": {
+                "ref": "docs/cards/gua-book/04-custom-keepsake.md",
+                "quote": "再點已選的卦就取消它（取消本卦時，變卦自動遞補成本卦）"
+              },
+              "risk": "low",
+              "riskReason": "AI 已逐步點過"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "選卦模式開著時下載結果區紀念圖，仍是「占　得」、用結果區的啟發；用蹇之恆回歸測試：占得、蹇之恆、起卦日期、檔名龜卜卜_蹇之恆_20261009.jpg 都對；重新整理後選卦模式關閉、預覽清空，上方起卦內容不變"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "gua-book/04-custom-keepsake/no-side-effect",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n上方先起一卦（或用原本還沒清掉的那一卦），在結果區「我的啟發」打幾個字。再到下方自選一卦、在下方的啟發框打別的字，然後：\n1. 按**結果區**的「⬇ 下載紀念圖」\n2. 重新整理網頁\n\n預期：\n- 結果區的圖上方寫「占　得」，印的是結果區的啟發，不是下方的\n- 重新整理後：上方的卦和啟發都還在；下方選卦模式關掉、選的卦和啟發都沒了",
+              "spec": {
+                "ref": "docs/cards/gua-book/04-custom-keepsake.md",
+                "quote": "上方正在起的卦（含結果區的我的啟發）完全不受影響；重新整理後選卦內容不保留"
+              },
+              "risk": "medium",
+              "riskReason": "這次改到結果區下載按鈕的程式（改成共用），AI 已做回歸測試"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "把頁面放進 375px、320px 寬的框量：沒有東西超出右邊、不需左右捲動；按鈕高 48px；截圖時發現本／變小標蓋到卦畫，已改成壓在格子外緣後重看 OK。沒有在真的手機上看"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": true,
+              "id": "gua-book/04-custom-keepsake/phone",
+              "text": "（要先推上網站才能用手機看）用自己的手機打開網站，捲到最下面「六十四卦」，按「✦ 自選卦做紀念圖」，點兩個卦、打一句啟發、按下載。\n\n預期：\n- 卦名格子點得準，本／變小標看得清楚\n- 預覽兩張牌卡並排不擠出畫面，不需左右滑\n- 下載按鈕好按；圖能存到手機（iPhone 可能要長按圖片儲存）",
+              "spec": {
+                "ref": "docs/cards/gua-book/04-custom-keepsake.md",
+                "quote": "手機寬度：預覽和按鈕好按、不需左右捲動"
+              },
+              "risk": "medium",
+              "riskReason": "AI 只量過窄框，沒在真手機上按過",
+              "manualOnlyReason": "要在你自己的手機上按"
+            }
+          ]
         }
       ]
     }

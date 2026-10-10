@@ -185,6 +185,50 @@ body {
   line-height: 1;
 }
 
+/* 首頁相遇區：主形象圖＋開場白＋閱讀完整故事 */
+.encounter {
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.encounter-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--gold-soft);
+  border-radius: 12px;
+  box-shadow: 0 0 0 4px rgba(7, 11, 34, 0.6), 0 0 0 5px var(--gold-faint), 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.encounter-lines {
+  margin: 18px 0 0;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+}
+
+.encounter-lines p { margin: 0; }
+
+/* 每個短句不拆開，窄螢幕只在逗號後換行 */
+.encounter-lines span { display: inline-block; }
+
+.encounter-more { margin: 10px 0 0; }
+
+.encounter-more a {
+  color: var(--gold);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+
+.encounter-more a:hover,
+.encounter-more a:focus-visible {
+  color: var(--gold-bright);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 /* 新手說明框：點標題展開／收起 */
 .guide > summary {
   cursor: pointer;

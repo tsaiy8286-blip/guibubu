@@ -816,6 +816,110 @@ window.VERIFY_DATA = {
           ]
         }
       ]
+    },
+    {
+      "id": "gua-book",
+      "name": "六十四卦卦典",
+      "status": "verifying",
+      "specRef": "docs/SPEC.md",
+      "allTicketsLoaded": false,
+      "tickets": [
+        {
+          "id": "01-gua-page",
+          "title": "01-卦典頁地基",
+          "items": [
+            {
+              "id": "gua-book/01-gua-page/look-and-words",
+              "text": "打開專案資料夾 `龜卜卜(程式碼)`，雙擊 **gua.html**，在瀏覽器網址列最後面加上 **#22** 按 Enter。\n\n點一下牌卡放大，對照牌卡最下面那行字。\n\n預期：\n- 牌卡下方金色引文「好好打扮自己，美也是力量。」和**牌卡圖上的字一模一樣**\n- 整頁好看：朱紅卦名、右邊的卦畫、引文上下的金線、「原文」「解說」兩個框、最下面的上一卦／回首頁／下一卦\n- 有沒有哪裡覺得擠、太空、或字太小",
+              "spec": {
+                "ref": "docs/cards/gua-book/01-gua-page.md",
+                "quote": "牌卡下方的引文和牌卡圖上的字一模一樣"
+              },
+              "risk": "high",
+              "riskReason": "圖上的字和版面好不好看，只能人眼判斷",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "AI 只比對了程式裡的字和提示詞檔一致（node test.js），圖上實際畫出來的字要人眼看"
+                }
+              },
+              "manualOnly": true,
+              "manualOnlyReason": "牌卡圖上的字與整體美感只能本人判斷",
+              "crossEnv": false
+            },
+            {
+              "id": "gua-book/01-gua-page/header-card-text",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開專案資料夾 `龜卜卜(程式碼)`，雙擊 **gua.html**，在瀏覽器網址列最後面加上 **#22** 按 Enter。\n\n預期：\n- 標頭「第22卦　山火賁」，下一行「上艮下離」，右邊卦畫由上往下：陽、陰、陰、陽、陰、陽\n- 牌卡是賁卦、沒有左右翻轉；點牌卡全畫面放大，再點一下關閉\n- 「原文」框裡是「賁：亨。小利有攸往。」；「解說」框寫「解說撰寫中」",
+              "spec": {
+                "ref": "docs/cards/gua-book/01-gua-page.md",
+                "quote": "打開 gua.html#22：標頭、牌卡、原文、解說"
+              },
+              "risk": "medium",
+              "riskReason": "新頁面的基本內容",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "Chrome 開 gua.html#22：標頭文字、上艮下離、卦畫截圖確認；牌卡 card-22.jpg 不鏡向，點擊放大、再點關閉；原文與解說文字正確"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false
+            },
+            {
+              "id": "gua-book/01-gua-page/navigation",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n接著上一項（停在賁卦），捲到最下面。\n\n1. 按「下一卦 ›」\n2. 按瀏覽器的「上一頁」\n3. 把網址最後的數字改成 **1**、**64**、**99** 各看一次\n4. 按網站名稱「龜卜卜線上求卦」\n\n預期：\n1. 變成第23卦　山地剝、畫面回到最上面、網址變 #23\n2. 回到賁卦\n3. #1 乾卦沒有「上一卦」；#64 未濟沒有「下一卦」；#99 顯示第1卦乾\n4. 回到首頁（「回首頁」按鈕也一樣）",
+              "spec": {
+                "ref": "docs/cards/gua-book/01-gua-page.md",
+                "quote": "上一卦／下一卦、瀏覽器上一頁、#1／#64／#99、回首頁"
+              },
+              "risk": "medium",
+              "riskReason": "跨頁連結與換卦",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "Chrome 實測：下一卦→#23 剝、捲回頂端；上一頁→#22；#1 無上一卦、#64 無下一卦、沒有#／#99／#abc 顯示第1卦、手改 #36 換成明夷；點網站名稱到 index.html；首頁牌卡放大仍正常、console 無錯誤"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false
+            },
+            {
+              "id": "gua-book/01-gua-page/phone-width",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n用手機寬度看（電腦上可把瀏覽器視窗拉到最窄）。\n\n預期：\n- 版面不擠、不需要左右捲動\n- 卦名和卦畫並排、牌卡完整\n\n（自己手機實機看要等推上網站後）",
+              "spec": {
+                "ref": "docs/cards/gua-book/01-gua-page.md",
+                "quote": "手機寬度看：版面不擠、不需左右捲動"
+              },
+              "risk": "low",
+              "riskReason": "AI 已量過 375、320 寬",
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "把頁面放進 375px、320px 寬的框量版面：沒有元素超出右邊；Edge 無畫面模式截圖看過兩種寬度（320 時乾卦的牌卡的話折成兩行）"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": true
+            }
+          ]
+        }
+      ]
     }
   ]
 };

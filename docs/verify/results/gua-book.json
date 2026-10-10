@@ -1,0 +1,32 @@
+{
+  "project": "龜卜卜六爻小幫手",
+  "changeId": "gua-book",
+  "changeName": "六十四卦卦典",
+  "exportedAt": "2026-10-10T01:11:09.173Z",
+  "environments": [
+    {
+      "id": "desktop",
+      "label": "電腦瀏覽器"
+    },
+    {
+      "id": "phone",
+      "label": "自己的手機"
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "pass": 1,
+    "fail": 0,
+    "skip": 0,
+    "untested": 3
+  },
+  "verdict": {
+    "gua-book/01-gua-page/look-and-words": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    }
+  },
+  "ticketNotes": {},
+  "changeNote": ""
+}

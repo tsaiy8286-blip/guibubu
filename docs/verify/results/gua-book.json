@@ -2,7 +2,7 @@
   "project": "龜卜卜六爻小幫手",
   "changeId": "gua-book",
   "changeName": "六十四卦卦典",
-  "exportedAt": "2026-10-10T01:11:09.173Z",
+  "exportedAt": "2026-10-10T01:59:41.228Z",
   "environments": [
     {
       "id": "desktop",
@@ -14,14 +14,39 @@
     }
   ],
   "summary": {
-    "total": 4,
-    "pass": 1,
+    "total": 12,
+    "pass": 6,
     "fail": 0,
     "skip": 0,
-    "untested": 3
+    "untested": 6
   },
   "verdict": {
     "gua-book/01-gua-page/look-and-words": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "gua-book/02-index-grid/look": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "gua-book/02-index-grid/grid-click": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "gua-book/02-index-grid/wu-not-wu": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "gua-book/03-classic-text/compare-own-copy": {
+      "status": "pass",
+      "note": "",
+      "envs": {}
+    },
+    "gua-book/03-classic-text/look": {
       "status": "pass",
       "note": "",
       "envs": {}

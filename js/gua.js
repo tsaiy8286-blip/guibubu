@@ -26,6 +26,21 @@
     }
   }
 
+  // 爻辭：初爻排到上爻（乾坤的用九、用六在最後），爻題另外上色
+  function renderYao(lines) {
+    var list = document.getElementById('gua-yao');
+    list.innerHTML = '';
+    lines.forEach(function (line) {
+      var li = document.createElement('li');
+      var label = document.createElement('span');
+      label.className = 'gua-label';
+      label.textContent = line.slice(0, 2);
+      li.appendChild(label);
+      li.appendChild(document.createTextNode(line.slice(3)));
+      list.appendChild(li);
+    });
+  }
+
   function setNav(link, n) {
     var g = hexagramByNumber(n);
     link.hidden = !g;
@@ -45,6 +60,8 @@
     HexCard.set(card, g);
     document.getElementById('card-words').textContent = '「' + CARD_WORDS[n - 1] + '」';
     document.getElementById('gua-judgment').textContent = g.judgment;
+    document.getElementById('gua-xiang').textContent = DA_XIANG[n - 1];
+    renderYao(YAO_CI[n - 1]);
     setNav(prev, n - 1);
     setNav(next, n + 1);
   }

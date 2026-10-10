@@ -792,6 +792,33 @@ body.zoom-open { overflow: hidden; }
 
 .gua-section { margin-bottom: 20px; }
 
+/* 原文：象曰、爻辭；爻題用古金色，和經文隔開 */
+.gua-label {
+  margin-right: 0.6em;
+  color: var(--gold);
+}
+
+.gua-xiang {
+  margin: 14px 0 0;
+  padding: 0 12px;
+  font-size: 0.95rem;
+}
+
+.gua-yao {
+  margin: 14px 0 0;
+  padding: 12px 12px 0;
+  border-top: 1px solid var(--gold-soft);
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.gua-yao li {
+  padding-left: 2.6em;
+  text-indent: -2.6em;
+}
+
+.gua-yao li + li { margin-top: 8px; }
+
 .gua-pending {
   margin: 0;
   color: var(--text-soft);

@@ -71,6 +71,24 @@ while ((m = re.exec(promptFile))) words.push(m[1]);
 assert.strictEqual(words.length, 64, '提示詞檔的下方題字不是 64 句');
 assert.deepStrictEqual(guaText.CARD_WORDS, words);
 
+// 原文：大象傳 64 句；爻辭每卦 6 條（乾坤另有用九、用六），爻題的九／六和卦畫一致
+assert.strictEqual(guaText.DA_XIANG.length, 64);
+assert.strictEqual(guaText.YAO_CI.length, 64);
+var POS = ['初', '二', '三', '四', '五', '上'];
+guaText.YAO_CI.forEach(function (lines, i) {
+  var n = i + 1, g = yao.hexagramByNumber(n);
+  assert.strictEqual(lines.length, n <= 2 ? 7 : 6, '第' + n + '卦爻辭條數不對');
+  for (var k = 0; k < 6; k++) {
+    var num = g.bits[k] ? '九' : '六';
+    var title = (k === 0 || k === 5) ? POS[k] + num : num + POS[k];
+    assert.strictEqual(lines[k].slice(0, 3), title + '，', '第' + n + '卦第' + (k + 1) + '爻爻題應為' + title);
+  }
+});
+assert.strictEqual(guaText.YAO_CI[0][6].slice(0, 3), '用九，');
+assert.strictEqual(guaText.YAO_CI[1][6].slice(0, 3), '用六，');
+assert.strictEqual(guaText.YAO_CI[21][5], '上九，白賁，無咎。');
+assert.strictEqual(guaText.DA_XIANG[21], '山下有火，賁。君子以明庶政，無敢折獄。');
+
 // 經文用繁體正字：網站資料不得出現古本的「无」（一律寫「無」）
 ['./js/data.js', './js/gua-text.js'].forEach(function (f) {
   assert.ok(fs.readFileSync(f, 'utf8').indexOf('无') < 0, f + ' 裡還有「无」，請改成「無」');

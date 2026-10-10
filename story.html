@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>故事緣起｜龜卜卜線上求卦</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="sky-vignette" aria-hidden="true"></div>
+  <div class="page">
+    <header class="site-header">
+      <div class="brand">
+        <h1 class="site-title"><a href="index.html">龜卜卜線上求卦</a></h1>
+        <span class="seal" aria-hidden="true">易</span>
+      </div>
+      <p class="tagline">觀象・知時・自省</p>
+      <div class="header-rule" aria-hidden="true"></div>
+    </header>
+
+    <main class="site-main">
+      <h2 class="story-title">故事緣起</h2>
+
+      <section class="panel story-section">
+        <h3 class="panel-title">一、履帝武敏，天道之始</h3>
+        <p>周人起於周原，傳說始祖母姜嫄於野外履天帝足跡，感天而孕生下后稷。</p>
+        <p>后稷一出生即遭棄於荒野，然冰雪之中有飛鳥以翼覆之，山林之中有百獸銜乳餵之。這段「無父而孕、棄而不死」的非凡誕生，開啟了周人與浩瀚天道相連的宿命——平凡之軀，亦能承載天命的英雄旅程。</p>
+        <p>周人深知：<strong>天不言，而以星象示人；地不語，而以萬物寄意。</strong> 天地的運行與生命的起伏，早已悄然烙印在滾滾運轉的星空之中。</p>
+      </section>
+
+      <section class="panel story-section">
+        <h3 class="panel-title">二、文王演易，星海重鑄</h3>
+        <p>相傳，商周交替之際，周文王仰觀星辰，俯察萬物，在四季往復與人世變遷之間，思索天地變化的紋理。</p>
+        <p>先人曾灼龜問兆，在龜甲的裂紋中尋求指引；而在後世傳說裡，文王演易，將對天地的叩問，寄託於六十四卦的象與辭。</p>
+        <p>龜甲有紋，卦象有意。人們懷著疑惑而來，在古老的象辭之間，既問天地，也照見自身。</p>
+        <p>故事中的「掌卦司」，便坐落在這片星穹之下，靜候每一位行至人生岔路的旅人。</p>
+      </section>
+
+      <section class="panel story-section">
+        <h3 class="panel-title">三、智慧女吏，神話懸念</h3>
+        <figure class="story-photo">
+          <button class="hex-card" type="button" id="story-photo" aria-label="放大 掌卦女吏全身定裝照"><img src="images/story-character.jpg" alt="掌卦女吏全身定裝照：身穿深藍官服，懷抱銅龜，立於星空下"></button>
+          <figcaption class="hex-hint">點圖可放大</figcaption>
+        </figure>
+        <p>掌管掌卦司的，是一位年約四十有五、眼神深邃溫潤的<strong>掌卦女吏</strong>。</p>
+        <p>她身穿象徵天道秩序與法度的嚴謹官服，懷中緊抱著一隻泛著溫潤金屬光澤的<strong>新鑄銅龜</strong>。這隻銅龜不再承受烈火灼燒的痛楚，而是融合了周朝的星象曆法與秩序哲學，專為解開凡塵俗世中的迷惘而生。</p>
+        <p>世人皆道她只是位恪盡職守的周朝女官，但在星光明滅間，偶爾會有人在她身上看見始祖母姜嫄那溫柔而深邃的影子……</p>
+        <p><strong>她究竟只是單純的掌卦女吏？抑或是始祖母跨越時空、暗中指引世人的靈魂化身？</strong> 這沉寂於星海中的答案，或許早已寫在她為你撥動的卦象之中。</p>
+      </section>
+
+      <section class="panel story-section">
+        <h3 class="panel-title">四、靜心起卦，萬物映照</h3>
+        <p>每當前來求卦者在星空下投擲六爻，女吏指尖輕撫銅龜，夜空中的星軌隨之旋轉，映照出周易六十四卦演變的天地氣象。</p>
+        <p>女吏不下斷言，不賣弄天機。她以成熟睿智的目光看透局勢，以撫慰人心的溫柔傾聽困頓，引導每一個人在浩瀚星海下：<strong>觀象、知時、自省</strong>。</p>
+      </section>
+
+      <p class="story-go"><a class="btn btn-primary" href="index.html#cast-info">靜心起卦 →</a></p>
+    </main>
+  </div>
+
+  <div class="card-zoom" id="card-zoom" role="dialog" aria-modal="true" aria-label="定裝照放大檢視" hidden>
+    <button class="hex-card" type="button" id="card-zoom-card" aria-label="關閉放大檢視"><img alt=""></button>
+  </div>
+
+  <script src="js/hex-card.js"></script>
+  <script>HexCard.bind(document.getElementById('story-photo'));</script>
+  <script src="js/sky.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-// 卦象牌卡（首頁與卦典頁共用）：images/hexagrams/card-01.jpg～card-64.jpg
+// 卦象牌卡（首頁與卦典頁共用；故事頁的定裝照也借用放大功能）：images/hexagrams/card-01.jpg～card-64.jpg
 // 點牌卡全畫面放大，再點一下或按 Esc 關閉；變卦的翻轉由 CSS 處理
 var HexCard = (function () {
   var cardZoom = document.getElementById('card-zoom');

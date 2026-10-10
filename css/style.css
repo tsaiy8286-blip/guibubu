@@ -1042,3 +1042,50 @@ body.zoom-open { overflow: hidden; }
 .pick-preview { margin-top: 22px; }
 
 .pick-preview .btn-keep { margin-bottom: 4px; }
+
+/* 故事頁（story.html）：標題、四段故事、定裝照、靜心起卦 */
+.story-title {
+  margin: 4px 0 22px;
+  color: var(--gold-bright);
+  font-size: 1.45rem;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(240, 212, 142, 0.35);
+}
+
+.story-section .panel-title { letter-spacing: 0.12em; }
+
+.story-section p { margin: 0; }
+
+.story-section p + p { margin-top: 12px; }
+
+.story-section strong { color: var(--gold-bright); }
+
+.story-photo {
+  max-width: 260px;
+  margin: 0 auto 18px;
+}
+
+.story-photo .hex-hint { margin-bottom: 0; }
+
+.story-go {
+  margin: 8px 0 0;
+  text-align: center;
+}
+
+.story-go .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 32px;
+  text-decoration: none;
+}
+
+@media (max-width: 380px) {
+  .story-title { font-size: 1.25rem; letter-spacing: 0.06em; }
+  .story-section .panel-title { letter-spacing: 0.06em; }
+}
+
+/* 從故事頁「靜心起卦 →」跳過來時，起卦資訊上緣留一點空，金框不被切到 */
+#cast-info { scroll-margin-top: 16px; }

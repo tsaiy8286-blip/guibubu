@@ -71,4 +71,10 @@ while ((m = re.exec(promptFile))) words.push(m[1]);
 assert.strictEqual(words.length, 64, '提示詞檔的下方題字不是 64 句');
 assert.deepStrictEqual(guaText.CARD_WORDS, words);
 
+// 經文用繁體正字：網站資料不得出現古本的「无」（一律寫「無」）
+['./js/data.js', './js/gua-text.js'].forEach(function (f) {
+  assert.ok(fs.readFileSync(f, 'utf8').indexOf('无') < 0, f + ' 裡還有「无」，請改成「無」');
+});
+assert.strictEqual(yao.hexagramByNumber(25).name, '無妄');
+
 console.log('全部通過');

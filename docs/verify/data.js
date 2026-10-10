@@ -820,9 +820,10 @@ window.VERIFY_DATA = {
     {
       "id": "gua-book",
       "name": "六十四卦卦典",
-      "status": "verifying",
+      "status": "closed",
+      "closedAt": "2026-10-10",
       "specRef": "docs/SPEC.md",
-      "allTicketsLoaded": false,
+      "allTicketsLoaded": true,
       "tickets": [
         {
           "id": "01-gua-page",
@@ -1224,7 +1225,7 @@ window.VERIFY_DATA = {
               "manualOnly": true,
               "crossEnv": false,
               "id": "gua-book/05-commentary-1/read-one",
-              "text": "用瀏覽器打開 `gua.html`（直接雙擊就好），網址最後改成 `#1` 看乾卦（或從首頁「六十四卦」點**乾**），往下捲到「解說」，挑**一兩卦**讀讀看（例如乾、訟）。\n\n預期：\n- 依序有：一句話卦意、陽面、陰面、吉中之凶／凶中之吉、六爻、一句話提醒\n- 讀起來有啟發、口氣溫和，不嚇人、不貶低人\n- 稱呼是「你」（開頭引用的牌卡的話保留「妳」）",
+              "text": "用瀏覽器打開 `gua.html`（直接雙擊就好），網址最後改成 `#1` 看乾卦（或從首頁「六十四卦」點**乾**），往下捲到「解說」，挑**一兩卦**讀讀看（例如乾、訟）。\n\n預期：\n- 依序有：卦意、陽面、陰面、吉中之凶／凶中之吉、六爻、一句話提醒\n- 讀起來有啟發、口氣溫和，不嚇人、不貶低人\n- 稱呼是「你」（開頭引用的牌卡的話保留「妳」）",
               "spec": {
                 "ref": "docs/SPEC.md 卦典頁・解說",
                 "quote": "語氣照〈一陰一陽・問事覺察版〉提示詞：溫和、誠懇、清醒、不恐嚇、不神化、不說「一定會」。"
@@ -1247,7 +1248,7 @@ window.VERIFY_DATA = {
               "manualOnly": true,
               "crossEnv": false,
               "id": "gua-book/05-commentary-1/look",
-              "text": "同上一項，看「解說」區塊的樣子。\n\n預期：\n- 小標（陽面、陰面⋯⋯）是金色，一句話卦意是比較亮的金色\n- 六爻每行前面有金色爻題（初九、九二⋯⋯）\n- 一句話提醒左邊有一條金線\n- 整體好不好看、好不好讀",
+              "text": "同上一項，看「解說」區塊的樣子。\n\n預期：\n- 小標（陽面、陰面⋯⋯）是金色，卦意是比較亮的金色\n- 六爻每行前面有金色爻題（初九、九二⋯⋯）\n- 一句話提醒左邊有一條金線\n- 整體好不好看、好不好讀",
               "spec": {
                 "ref": "docs/SPEC.md 卦典頁・解說",
                 "quote": "解說（區塊，標題「解說」）"
@@ -1270,10 +1271,10 @@ window.VERIFY_DATA = {
               "manualOnly": false,
               "crossEnv": false,
               "id": "gua-book/05-commentary-1/card-words-match",
-              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開第1～8卦任一卦，對照上方牌卡下面那句話和「一句話卦意」的開頭。\n\n預期：\n- 一句話卦意開頭（「」裡的字）和牌卡上的句子一字不差",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開第1～8卦任一卦，對照上方牌卡下面那句話和「卦意」的開頭。\n\n預期：\n- 卦意開頭（「」裡的字）和牌卡上的句子一字不差",
               "spec": {
                 "ref": "docs/cards/gua-book/05-commentary-1.md",
-                "quote": "一句話卦意：開頭一定引用牌卡的話原句"
+                "quote": "卦意：開頭一定引用牌卡的話原句"
               },
               "risk": "low",
               "riskReason": "AI 已用程式和看圖兩種方式核對"
@@ -1322,6 +1323,392 @@ window.VERIFY_DATA = {
               "risk": "medium",
               "riskReason": "AI 只模擬手機寬度",
               "manualOnlyReason": "要用你自己的手機看"
+            }
+          ]
+        },
+        {
+          "id": "06-commentary-2",
+          "title": "06-解說第2批（第9～16卦）",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "AI 通讀第9～16卦、避開貶意與陰森說法，沒有「一定會」「命中注定」；內容好不好讀仍要你判斷"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "gua-book/06-commentary-2/read-one",
+              "text": "用瀏覽器打開 `gua.html`（直接雙擊就好），網址最後改成 `#9`，往下捲到「解說」。挑**一兩卦**讀讀看（建議：小畜、泰、大有）。\n\n預期：\n- 讀起來有啟發、口氣溫和，不嚇人、不貶低人\n- 牌卡的話偏鼓勵的卦，有把卦辭的提醒補上（例如小畜）",
+              "spec": {
+                "ref": "docs/SPEC.md 卦典頁・解說",
+                "quote": "語氣照〈一陰一陽・問事覺察版〉提示詞：溫和、誠懇、清醒、不恐嚇、不神化、不說「一定會」。"
+              },
+              "risk": "high",
+              "riskReason": "內容好不好只有你能決定",
+              "manualOnlyReason": "文字讀起來的感覺要你判斷"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "程式逐字比對第9～16卦開頭和牌卡的話；看過 card-09～16.jpg 圖上的字都一致；沒有簡體字；Chrome 逐卦換過，解說都有顯示、六爻條數對；node test.js 通過"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "gua-book/06-commentary-2/card-words-match",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開第9～16卦任一卦，對照上方牌卡下面那句話和「卦意」的開頭。\n\n預期：\n- 「」裡的字和牌卡上的句子一字不差\n- 解說區塊有六段：卦意、陽面、陰面、吉中之凶／凶中之吉、六爻、一句話提醒",
+              "spec": {
+                "ref": "docs/cards/gua-book/06-commentary-2.md",
+                "quote": "「卦意」開頭都是牌卡的話原句，且和牌卡圖上的字一樣"
+              },
+              "risk": "low",
+              "riskReason": "AI 已用程式和看圖兩種方式核對"
+            }
+          ]
+        },
+        {
+          "id": "07-commentary-3",
+          "title": "07-解說第3批（第17～24卦）",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "AI 通讀第17～24卦、避開貶意與陰森說法，沒有「一定會」「命中注定」；內容好不好讀仍要你判斷"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "gua-book/07-commentary-3/read-one",
+              "text": "用瀏覽器打開 `gua.html`（直接雙擊就好），網址最後改成 `#17`，往下捲到「解說」。挑**一兩卦**讀讀看（建議：隨、臨、剝）。\n\n預期：\n- 讀起來有啟發、口氣溫和，不嚇人、不貶低人\n- 牌卡的話偏鼓勵的卦，有把卦辭的提醒補上（例如隨）",
+              "spec": {
+                "ref": "docs/SPEC.md 卦典頁・解說",
+                "quote": "語氣照〈一陰一陽・問事覺察版〉提示詞：溫和、誠懇、清醒、不恐嚇、不神化、不說「一定會」。"
+              },
+              "risk": "high",
+              "riskReason": "內容好不好只有你能決定",
+              "manualOnlyReason": "文字讀起來的感覺要你判斷"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "程式逐字比對第17～24卦開頭和牌卡的話；看過 card-17～24.jpg 圖上的字都一致；沒有簡體字；Chrome 逐卦換過，解說都有顯示、六爻條數對；node test.js 通過"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "gua-book/07-commentary-3/card-words-match",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開第17～24卦任一卦，對照上方牌卡下面那句話和「卦意」的開頭。\n\n預期：\n- 「」裡的字和牌卡上的句子一字不差\n- 解說區塊有六段：卦意、陽面、陰面、吉中之凶／凶中之吉、六爻、一句話提醒",
+              "spec": {
+                "ref": "docs/cards/gua-book/07-commentary-3.md",
+                "quote": "「卦意」開頭都是牌卡的話原句，且和牌卡圖上的字一樣"
+              },
+              "risk": "low",
+              "riskReason": "AI 已用程式和看圖兩種方式核對"
+            }
+          ]
+        },
+        {
+          "id": "08-commentary-4",
+          "title": "08-解說第4批（第25～32卦）",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "AI 通讀第25～32卦、避開貶意與陰森說法，沒有「一定會」「命中注定」；內容好不好讀仍要你判斷"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "gua-book/08-commentary-4/read-one",
+              "text": "用瀏覽器打開 `gua.html`（直接雙擊就好），網址最後改成 `#25`，往下捲到「解說」。挑**一兩卦**讀讀看（建議：無妄、大過、咸）。\n\n預期：\n- 讀起來有啟發、口氣溫和，不嚇人、不貶低人\n- 牌卡的話偏鼓勵的卦，有把卦辭的提醒補上（例如無妄）",
+              "spec": {
+                "ref": "docs/SPEC.md 卦典頁・解說",
+                "quote": "語氣照〈一陰一陽・問事覺察版〉提示詞：溫和、誠懇、清醒、不恐嚇、不神化、不說「一定會」。"
+              },
+              "risk": "high",
+              "riskReason": "內容好不好只有你能決定",
+              "manualOnlyReason": "文字讀起來的感覺要你判斷"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "程式逐字比對第25～32卦開頭和牌卡的話；看過 card-25～32.jpg 圖上的字都一致；沒有簡體字；Chrome 逐卦換過，解說都有顯示、六爻條數對；node test.js 通過"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "gua-book/08-commentary-4/card-words-match",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開第25～32卦任一卦，對照上方牌卡下面那句話和「卦意」的開頭。\n\n預期：\n- 「」裡的字和牌卡上的句子一字不差\n- 解說區塊有六段：卦意、陽面、陰面、吉中之凶／凶中之吉、六爻、一句話提醒",
+              "spec": {
+                "ref": "docs/cards/gua-book/08-commentary-4.md",
+                "quote": "「卦意」開頭都是牌卡的話原句，且和牌卡圖上的字一樣"
+              },
+              "risk": "low",
+              "riskReason": "AI 已用程式和看圖兩種方式核對"
+            }
+          ]
+        },
+        {
+          "id": "09-commentary-5",
+          "title": "09-解說第5批（第33～40卦）",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "AI 通讀第33～40卦、避開貶意與陰森說法，沒有「一定會」「命中注定」；內容好不好讀仍要你判斷"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "gua-book/09-commentary-5/read-one",
+              "text": "用瀏覽器打開 `gua.html`（直接雙擊就好），網址最後改成 `#33`，往下捲到「解說」。挑**一兩卦**讀讀看（建議：遯、明夷、蹇）。\n\n預期：\n- 讀起來有啟發、口氣溫和，不嚇人、不貶低人\n- 牌卡的話偏鼓勵的卦，有把卦辭的提醒補上（例如遯）",
+              "spec": {
+                "ref": "docs/SPEC.md 卦典頁・解說",
+                "quote": "語氣照〈一陰一陽・問事覺察版〉提示詞：溫和、誠懇、清醒、不恐嚇、不神化、不說「一定會」。"
+              },
+              "risk": "high",
+              "riskReason": "內容好不好只有你能決定",
+              "manualOnlyReason": "文字讀起來的感覺要你判斷"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "程式逐字比對第33～40卦開頭和牌卡的話；看過 card-33～40.jpg 圖上的字都一致；沒有簡體字；Chrome 逐卦換過，解說都有顯示、六爻條數對；node test.js 通過"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "gua-book/09-commentary-5/card-words-match",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開第33～40卦任一卦，對照上方牌卡下面那句話和「卦意」的開頭。\n\n預期：\n- 「」裡的字和牌卡上的句子一字不差\n- 解說區塊有六段：卦意、陽面、陰面、吉中之凶／凶中之吉、六爻、一句話提醒",
+              "spec": {
+                "ref": "docs/cards/gua-book/09-commentary-5.md",
+                "quote": "「卦意」開頭都是牌卡的話原句，且和牌卡圖上的字一樣"
+              },
+              "risk": "low",
+              "riskReason": "AI 已用程式和看圖兩種方式核對"
+            }
+          ]
+        },
+        {
+          "id": "10-commentary-6",
+          "title": "10-解說第6批（第41～48卦）",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "AI 通讀第41～48卦、避開貶意與陰森說法，沒有「一定會」「命中注定」；內容好不好讀仍要你判斷"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "gua-book/10-commentary-6/read-one",
+              "text": "用瀏覽器打開 `gua.html`（直接雙擊就好），網址最後改成 `#41`，往下捲到「解說」。挑**一兩卦**讀讀看（建議：損、困、井）。\n\n預期：\n- 讀起來有啟發、口氣溫和，不嚇人、不貶低人\n- 牌卡的話偏鼓勵的卦，有把卦辭的提醒補上（例如損）",
+              "spec": {
+                "ref": "docs/SPEC.md 卦典頁・解說",
+                "quote": "語氣照〈一陰一陽・問事覺察版〉提示詞：溫和、誠懇、清醒、不恐嚇、不神化、不說「一定會」。"
+              },
+              "risk": "high",
+              "riskReason": "內容好不好只有你能決定",
+              "manualOnlyReason": "文字讀起來的感覺要你判斷"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "程式逐字比對第41～48卦開頭和牌卡的話；看過 card-41～48.jpg 圖上的字都一致；沒有簡體字；Chrome 逐卦換過，解說都有顯示、六爻條數對；node test.js 通過"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "gua-book/10-commentary-6/card-words-match",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開第41～48卦任一卦，對照上方牌卡下面那句話和「卦意」的開頭。\n\n預期：\n- 「」裡的字和牌卡上的句子一字不差\n- 解說區塊有六段：卦意、陽面、陰面、吉中之凶／凶中之吉、六爻、一句話提醒",
+              "spec": {
+                "ref": "docs/cards/gua-book/10-commentary-6.md",
+                "quote": "「卦意」開頭都是牌卡的話原句，且和牌卡圖上的字一樣"
+              },
+              "risk": "low",
+              "riskReason": "AI 已用程式和看圖兩種方式核對"
+            }
+          ]
+        },
+        {
+          "id": "11-commentary-7",
+          "title": "11-解說第7批（第49～56卦）",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "AI 通讀第49～56卦、避開貶意與陰森說法，沒有「一定會」「命中注定」；內容好不好讀仍要你判斷"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "gua-book/11-commentary-7/read-one",
+              "text": "用瀏覽器打開 `gua.html`（直接雙擊就好），網址最後改成 `#49`，往下捲到「解說」。挑**一兩卦**讀讀看（建議：革、歸妹、豐）。\n\n預期：\n- 讀起來有啟發、口氣溫和，不嚇人、不貶低人\n- 牌卡的話偏鼓勵的卦，有把卦辭的提醒補上（例如革）",
+              "spec": {
+                "ref": "docs/SPEC.md 卦典頁・解說",
+                "quote": "語氣照〈一陰一陽・問事覺察版〉提示詞：溫和、誠懇、清醒、不恐嚇、不神化、不說「一定會」。"
+              },
+              "risk": "high",
+              "riskReason": "內容好不好只有你能決定",
+              "manualOnlyReason": "文字讀起來的感覺要你判斷"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "程式逐字比對第49～56卦開頭和牌卡的話；看過 card-49～56.jpg 圖上的字都一致；沒有簡體字；Chrome 逐卦換過，解說都有顯示、六爻條數對；node test.js 通過"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "gua-book/11-commentary-7/card-words-match",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開第49～56卦任一卦，對照上方牌卡下面那句話和「卦意」的開頭。\n\n預期：\n- 「」裡的字和牌卡上的句子一字不差\n- 解說區塊有六段：卦意、陽面、陰面、吉中之凶／凶中之吉、六爻、一句話提醒",
+              "spec": {
+                "ref": "docs/cards/gua-book/11-commentary-7.md",
+                "quote": "「卦意」開頭都是牌卡的話原句，且和牌卡圖上的字一樣"
+              },
+              "risk": "low",
+              "riskReason": "AI 已用程式和看圖兩種方式核對"
+            }
+          ]
+        },
+        {
+          "id": "12-commentary-8",
+          "title": "12-解說第8批（第57～64卦）",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "AI 通讀第57～64卦、避開貶意與陰森說法，沒有「一定會」「命中注定」；內容好不好讀仍要你判斷"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "gua-book/12-commentary-8/read-one",
+              "text": "用瀏覽器打開 `gua.html`（直接雙擊就好），網址最後改成 `#57`，往下捲到「解說」。挑**一兩卦**讀讀看（建議：節、既濟、未濟）。\n\n預期：\n- 讀起來有啟發、口氣溫和，不嚇人、不貶低人\n- 牌卡的話偏鼓勵的卦，有把卦辭的提醒補上（例如節）",
+              "spec": {
+                "ref": "docs/SPEC.md 卦典頁・解說",
+                "quote": "語氣照〈一陰一陽・問事覺察版〉提示詞：溫和、誠懇、清醒、不恐嚇、不神化、不說「一定會」。"
+              },
+              "risk": "high",
+              "riskReason": "內容好不好只有你能決定",
+              "manualOnlyReason": "文字讀起來的感覺要你判斷"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "程式逐字比對第57～64卦開頭和牌卡的話；看過 card-57～64.jpg 圖上的字都一致；沒有簡體字；Chrome 逐卦換過，解說都有顯示、六爻條數對；node test.js 通過"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "gua-book/12-commentary-8/card-words-match",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n打開第57～64卦任一卦，對照上方牌卡下面那句話和「卦意」的開頭。\n\n預期：\n- 「」裡的字和牌卡上的句子一字不差\n- 解說區塊有六段：卦意、陽面、陰面、吉中之凶／凶中之吉、六爻、一句話提醒",
+              "spec": {
+                "ref": "docs/cards/gua-book/12-commentary-8.md",
+                "quote": "「卦意」開頭都是牌卡的話原句，且和牌卡圖上的字一樣"
+              },
+              "risk": "low",
+              "riskReason": "AI 已用程式和看圖兩種方式核對"
+            }
+          ]
+        },
+        {
+          "id": "integration",
+          "title": "整體走一遍",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": ""
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "gua-book/integration/walkthrough",
+              "text": "從首頁開始走一遍卦典：\n1. 打開 `index.html`，捲到最下面「六十四卦」，點任一卦名（例如**謙**）\n2. 在卦典頁看牌卡、牌卡的話、原文、解說\n3. 按底部「下一卦 ›」「‹ 上一卦」換幾卦，再按「回首頁」\n4. 回首頁起一卦（或用原本的卦），在結果區點卦名，確認也會進到卦典頁、看得到解說\n5. 在首頁按「✦ 自選卦做紀念圖」選一卦下載，確認紀念圖照常\n\n預期：\n- 64 卦都有解說，沒有「解說撰寫中」\n- 換卦、回首頁、自選卦紀念圖都正常",
+              "spec": {
+                "ref": "docs/SPEC.md 六十四卦、卦典頁",
+                "quote": "新增「六十四卦」卦典：首頁最下方 64 卦區（點卦名看卦典頁、可自選一卦或兩卦做紀念圖）"
+              },
+              "risk": "medium",
+              "riskReason": "整個卦典功能串起來只有你走過才算",
+              "manualOnlyReason": "整體走一遍要你親手做"
             }
           ]
         }

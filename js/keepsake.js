@@ -1,6 +1,7 @@
 // 下載紀念圖：在瀏覽器裡把本卦＋變卦牌卡、我的啟發、日期落款合成一張 JPG，不上傳
-// makeKeepsake({ primary, changed, insight, date }) → Promise<Blob>
+// makeKeepsake({ primary, changed, insight, date, label }) → Promise<Blob>
 //   primary／changed：卦資料（changed 為 null 表示沒有動爻）；date：「2026.10.09」
+//   label：上方小字，預設「占　得」（首頁自選卦用「觀　象」）
 //   不放問事內容（避免私事外流）
 (function () {
   var CW = 683, CH = 1024;   // 網頁版牌卡尺寸
@@ -139,12 +140,12 @@
       g.lineWidth = 1;
       g.strokeRect(40, 40, Wc - 80, Hc - 80);
 
-      // 標題：占得＋卦名
+      // 標題：占得（或觀象）＋卦名
       g.textAlign = 'center';
       g.textBaseline = 'middle';
       g.fillStyle = '#b9b09c';
       g.font = '30px ' + font;
-      g.fillText('占　得', Wc / 2, 112);
+      g.fillText(opts.label || '占　得', Wc / 2, 112);
       g.save();
       g.fillStyle = '#f0d48e';
       g.shadowColor = 'rgba(240,212,142,0.45)';
@@ -207,6 +208,34 @@
       return new Promise(function (ok, bad) {
         cv.toBlob(function (blob) { if (blob) ok(blob); else bad(new Error('toBlob')); }, 'image/jpeg', 0.9);
       });
+    });
+  };
+
+  // 按下載按鈕：顯示「製作中…」，完成「✓ 已下載」，失敗「下載失敗，請再試一次」，幾秒後還原
+  // 結果區與首頁自選卦共用；fileName 例如「龜卜卜_蹇之恆_20261009.jpg」
+  var KEEP_LABEL = '⬇ 下載紀念圖';
+
+  window.downloadKeepsake = function (btn, opts, fileName) {
+    clearTimeout(btn.keepTimer);
+    btn.disabled = true;
+    btn.textContent = '製作中…';
+    window.makeKeepsake(opts).then(function (blob) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 60000);
+      btn.textContent = '✓ 已下載';
+    }, function () {
+      // 直接雙擊開檔（file://）時瀏覽器禁止合成下載，要用網址開啟
+      btn.textContent = location.protocol === 'file:'
+        ? '直接開檔無法下載，請用網站網址開啟'
+        : '下載失敗，請再試一次';
+    }).then(function () {
+      btn.disabled = false;
+      btn.keepTimer = setTimeout(function () { btn.textContent = KEEP_LABEL; }, location.protocol === 'file:' ? 6000 : 3000);
     });
   };
 })();

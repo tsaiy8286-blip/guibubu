@@ -941,3 +941,37 @@ body.zoom-open { overflow: hidden; }
   .gua-grid { gap: 2px; }
   .gua-cell-name.is-long { font-size: 0.75rem; }
 }
+
+/* 自選卦做紀念圖：選卦模式下，本卦／變卦格子加朱紅框、角上小字「本」「變」 */
+.pick-toggle { display: block; margin: 0 0 12px; }
+
+.gua-cell { position: relative; }
+
+.gua-grid.is-picking .gua-cell { cursor: pointer; }
+
+.gua-cell.is-picked,
+.gua-cell.is-picked:hover {
+  border-color: var(--cinnabar-light);
+  background: rgba(176, 53, 42, 0.16);
+}
+
+/* 角標壓在格子右上角外緣，手機窄格也不會蓋到卦畫 */
+.pick-mark {
+  position: absolute;
+  top: -6px;
+  right: -4px;
+  z-index: 1;
+  padding: 2px 3px;
+  border-radius: 3px;
+  background: var(--cinnabar);
+  color: #fdf6e8;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.pick-mark:empty { display: none; }
+
+.pick-preview { margin-top: 22px; }
+
+.pick-preview .btn-keep { margin-bottom: 4px; }

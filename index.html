@@ -161,8 +161,31 @@
 
       <section class="panel gua-index" id="gua-index">
         <h2 class="panel-title">六十四卦</h2>
-        <p class="gua-index-hint">點卦名看原文與解說</p>
+        <p class="gua-index-hint" id="gua-index-hint">點卦名看原文與解說</p>
+        <button class="btn btn-small pick-toggle" type="button" id="pick-toggle" aria-pressed="false">✦ 自選卦做紀念圖</button>
         <ol class="gua-grid" id="gua-grid"></ol>
+
+        <div class="pick-preview" id="pick-preview" hidden>
+          <div class="hex-cards">
+            <figure class="hex-card-col">
+              <button class="hex-card" type="button" id="pick-card-primary"><img alt=""></button>
+              <figcaption>本卦</figcaption>
+            </figure>
+            <span class="hex-arrow" id="pick-arrow" aria-hidden="true">→</span>
+            <figure class="hex-card-col" id="pick-changed-col">
+              <button class="hex-card is-mirror" type="button" id="pick-card-changed"><img alt=""><img class="hex-flip" alt=""></button>
+              <figcaption>變卦</figcaption>
+            </figure>
+          </div>
+          <p class="hex-hint">點牌卡可放大</p>
+
+          <div class="field insight">
+            <label class="field-label" for="pick-insight">我的啟發（60 字以內，會印在紀念圖上；可留空）</label>
+            <textarea class="input input-multiline" id="pick-insight" rows="3" maxlength="60" placeholder="例如：外表的修飾再美，也照不亮黑夜；收斂光芒、守住內心的明白，等待時機再出發。"></textarea>
+            <p class="insight-count" id="pick-insight-count" aria-live="polite">0 / 60</p>
+          </div>
+          <button class="btn btn-keep" type="button" id="pick-download">⬇ 下載紀念圖</button>
+        </div>
       </section>
     </main>
   </div>

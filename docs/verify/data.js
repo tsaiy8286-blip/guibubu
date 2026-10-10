@@ -1207,6 +1207,111 @@ window.VERIFY_DATA = {
           ]
         }
       ]
+    },
+    {
+      "id": "beginner-guide",
+      "name": "新手說明",
+      "status": "verifying",
+      "specRef": "docs/SPEC.md",
+      "allTicketsLoaded": false,
+      "tickets": [
+        {
+          "id": "01-guide-box",
+          "title": "01-新手說明框",
+          "items": [
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": false,
+                  "how": "AI 有截圖確認結構與位置，但好不好看、文字順不順要你判斷"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": false,
+              "id": "beginner-guide/01-guide-box/look-and-words",
+              "text": "用**無痕視窗**（Chrome 按 Ctrl＋Shift＋N）打開專案資料夾裡的 **index.html**（把檔案拖進無痕視窗即可）。\n\n預期：\n- 網站標題的金線下方、「一 起卦資訊」上方，有一個「第一次來？三步驟就能解卦」的框，**一打開就是展開的**\n- 框的樣子和下面的區塊同款（深藍底、金框、左上右下小角飾），標題前沒有編號圓圈\n- 標題右邊的展開記號（▾）看得出來可以點\n- 三步驟讀起來順、朋友看得懂；有沒有哪裡覺得擠、太空、字太小",
+              "spec": {
+                "ref": "docs/cards/beginner-guide/01-guide-box.md",
+                "quote": "標題「第一次來？三步驟就能解卦」，點標題展開／收起（標題旁有展開記號）"
+              },
+              "risk": "high",
+              "riskReason": "外觀和文字只有你能判斷",
+              "manualOnlyReason": "好不好看、文字是否通順要你看"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "全新網址第一次打開 → 自動展開；點標題收起、再點展開；重新整理 → 收起；另外模擬瀏覽器擋下儲存 → 照樣展開、沒有錯誤"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "beginner-guide/01-guide-box/toggle-and-remember",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n接著上一項（同一個無痕視窗）：\n1. 點框的標題 → 收起\n2. 再點一次 → 展開\n3. 按 F5 重新整理\n\n預期：\n- 1、2 收起展開都正常，展開記號會上下翻轉\n- 重新整理後框是**收起的**（這台瀏覽器已經看過了），點標題仍可展開",
+              "spec": {
+                "ref": "docs/cards/beginner-guide/01-guide-box.md",
+                "quote": "這台裝置第一次打開網站時自動展開；之後再來預設收起，仍可點開"
+              },
+              "risk": "low",
+              "riskReason": "AI 已逐步點過"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "填資料擲六次 → 結果出現澤水困→水澤節；六十四卦 64 格都在；gua.html 沒有說明框；強制重新整理後主控台無錯誤（曾出現的 hexagramByNumber 錯誤是瀏覽器留舊檔暫存）"
+                }
+              },
+              "manualOnly": false,
+              "crossEnv": false,
+              "id": "beginner-guide/01-guide-box/others-still-work",
+              "text": "> ✅ AI 已實際打開檢查過（見覆蓋說明），可略過；有空再親手看一次。\n\n在首頁照平常起一卦：填時間、類別、問事，按「開始擲卦」，擲完六次。再捲到最下面點一個卦名。\n\n預期：\n- 起卦、擲卦、結果區都和以前一樣\n- 最下面六十四卦 64 格都在，點卦名會到卦典頁\n- 卦典頁**沒有**「第一次來？」這個框",
+              "spec": {
+                "ref": "docs/cards/beginner-guide/01-guide-box.md",
+                "quote": "下方起卦、擲卦、結果區、六十四卦都照常運作；卦典頁沒有這個框"
+              },
+              "risk": "low",
+              "riskReason": "AI 已實際走過；若畫面怪怪的先按 Ctrl＋Shift＋R"
+            },
+            {
+              "coverage": {
+                "auto": {
+                  "covered": false,
+                  "ref": ""
+                },
+                "agent": {
+                  "covered": true,
+                  "how": "把首頁放進 375px 寬的框量：頁面寬 360 沒有左右捲動；標題一行、點按區高 42px；截圖文字沒被切掉。沒有在真的手機上看"
+                }
+              },
+              "manualOnly": true,
+              "crossEnv": true,
+              "id": "beginner-guide/01-guide-box/phone",
+              "text": "（要先推上網站才能用手機看；也可以等之後一起看）用自己的手機打開網站，看最上面的說明框。\n\n預期：\n- 文字大小好讀，不需左右滑\n- 標題一行放得下，用手指點得到、能展開收起",
+              "spec": {
+                "ref": "docs/cards/beginner-guide/01-guide-box.md",
+                "quote": "手機寬度：文字好讀、不需左右捲動，標題好點"
+              },
+              "risk": "medium",
+              "riskReason": "AI 只量過窄框，沒在真手機上按過",
+              "manualOnlyReason": "要在你自己的手機上看"
+            }
+          ]
+        }
+      ]
     }
   ]
 };
